@@ -7,6 +7,7 @@ import javax.swing.*;
 
 public class MapScreen extends ActiveScreen
 {
+	JPanel worldBar;
 	JButton world1Button;
 	JButton world2Button;
 	JButton world3Button;
@@ -14,18 +15,24 @@ public class MapScreen extends ActiveScreen
 	JButton world5Button;
 	JButton worldEndlessButton;
 	
-	MapScreen()
+	MapScreen(MenuScreen frame)
 	{
+		this.frame = frame;
 		initUI();
 	}
 	
 	public void initUI()
 	{
-		this.setSize(635, 50);
-		this.setLocation(155, 5);
-		this.setBackground(Color.black);
+		this.setSize(650, 600);
+		this.setLocation(150, 0);
+		this.setBackground(Color.white);
 		
-		this.setLayout(new GridLayout(1,6,10,0));
+		worldBar = new JPanel();
+		worldBar.setSize(635, 50);
+		worldBar.setLocation(5, 5);
+		worldBar.setBackground(Color.black);
+		
+		worldBar.setLayout(new GridLayout(1,6,10,0));
 		world1Button = new JButton("World 1");
 		world2Button = new JButton("World 2");
 		world3Button = new JButton("World 3");
@@ -33,11 +40,12 @@ public class MapScreen extends ActiveScreen
 		world5Button = new JButton("World 5");
 		worldEndlessButton = new JButton("Endless");
 		
-		this.add(world1Button);
-		this.add(world2Button);
-		this.add(world3Button);
-		this.add(world4Button);
-		this.add(world5Button);
-		this.add(worldEndlessButton);
+		worldBar.add(world1Button);
+		worldBar.add(world2Button);
+		worldBar.add(world3Button);
+		worldBar.add(world4Button);
+		worldBar.add(world5Button);
+		worldBar.add(worldEndlessButton);
+		this.add(worldBar);
 	}
 }

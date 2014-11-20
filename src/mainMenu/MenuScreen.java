@@ -35,12 +35,13 @@ public class MenuScreen extends JFrame implements ActionListener
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		//Screen modules
-		sidebar = new Sidebar();
-		activeScreen = new MapScreen();
+		sidebar = new Sidebar(this);
+		activeScreen = new MapScreen(this);
 		
 		//Adding to content pane
 		this.add(sidebar);
 		this.add(activeScreen);
+		this.setVisible(true);
 	}
 	
 	public static void main(String[] args) 
@@ -59,9 +60,45 @@ public class MenuScreen extends JFrame implements ActionListener
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) 
+	public void actionPerformed(ActionEvent e)
 	{
-		// TODO Auto-generated method stub
+		String action = e.getActionCommand();
 		
+		if (action.equals("World"))
+		{
+			this.remove(activeScreen);
+			activeScreen = new MapScreen(this);
+			this.add(activeScreen);
+			this.repaint();
+			this.setVisible(true);
+		}
+		else if (action.equals("Rewards"))
+		{
+			System.out.println("Rewards");
+		}
+		else if (action.equals("Items"))
+		{
+			this.remove(activeScreen);
+			activeScreen = new ItemsScreen(this);
+			this.add(activeScreen);
+			this.repaint();
+			this.setVisible(true);
+		}
+		else if (action.equals("Store"))
+		{
+			System.out.println("Store");
+		}
+		else if (action.equals("Stats"))
+		{
+			System.out.println("Stats");
+		}
+		else if (action.equals("Settings"))
+		{
+			System.out.println("Settings");
+		}
+		else if (action.equals("Log Off"))
+		{
+			System.out.println("Log Off");
+		}
 	}
 }

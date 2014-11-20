@@ -6,8 +6,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class Sidebar extends JPanel implements ActionListener
+public class Sidebar extends JPanel
 {
+	MenuScreen frame;
 	
 	JButton worldButton;
 	JButton rewardsButton;
@@ -19,8 +20,9 @@ public class Sidebar extends JPanel implements ActionListener
 	
 	Dimension maxButtonDimension;
 	
-	Sidebar()
+	Sidebar(MenuScreen frame)
 	{
+		this.frame = frame;
 		initSidebar();
 	}
 	
@@ -69,58 +71,14 @@ public class Sidebar extends JPanel implements ActionListener
 		this.add(settingsButton,BorderLayout.PAGE_START);
 		this.add(logOffButton,BorderLayout.PAGE_START);
 		
-		worldButton.addActionListener(this);
-		rewardsButton.addActionListener(this);
-		itemsButton.addActionListener(this);
-		storeButton.addActionListener(this);
-		statsButton.addActionListener(this);
-		settingsButton.addActionListener(this);
-		logOffButton.addActionListener(this);
+		worldButton.addActionListener(this.frame);
+		rewardsButton.addActionListener(this.frame);
+		itemsButton.addActionListener(this.frame);
+		storeButton.addActionListener(this.frame);
+		statsButton.addActionListener(this.frame);
+		settingsButton.addActionListener(this.frame);
+		logOffButton.addActionListener(this.frame);
 	}
 	
-	public void actionPerformed(ActionEvent e)
-	{
-		String action = e.getActionCommand();
-		
-		if (action.equals("World"))
-		{
-			System.out.println("World");
-			MenuScreen ms = (MenuScreen) this.getParent();
-			ms.activeScreen = new MapScreen();
-		}
-		else if (action.equals("Rewards"))
-		{
-			System.out.println("Rewards");
-		}
-		else if (action.equals("Items"))
-		{
-			System.out.println("Items");
-			try 
-			{
-				JFrame ms = (JFrame) SwingUtilities.getWindowAncestor(this);
-				//ms.activeScreen = new ItemsScreen();
-			}
-			catch (Exception ex)
-			{
-				ex.printStackTrace();
-			}
-			
-		}
-		else if (action.equals("Store"))
-		{
-			System.out.println("Store");
-		}
-		else if (action.equals("Stats"))
-		{
-			System.out.println("Stats");
-		}
-		else if (action.equals("Settings"))
-		{
-			System.out.println("Settings");
-		}
-		else if (action.equals("Log Off"))
-		{
-			System.out.println("Log Off");
-		}
-	}
+	
 }
