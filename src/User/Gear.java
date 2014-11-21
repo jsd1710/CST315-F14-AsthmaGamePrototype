@@ -1,9 +1,12 @@
 package User;
 
-import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 
 public abstract class Gear 
 {
-	public String name;
-	public BufferedImage image;
+	String name;
+	ImageIcon image;
+	
+	abstract public ImageIcon getImage();
+	abstract public String getName();
 }

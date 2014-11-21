@@ -51,7 +51,7 @@ public class ItemsScreen extends ActiveScreen
 		bodyPanel.setSize(75, 125);
 		bodyPanel.setLocation(itemsBackground.getWidth()/2-bodyPanel.getWidth()/2, (int) (itemsBackground.getHeight()*0.10+headPanel.getHeight()+5));
 		bodyPanel.setBackground(Color.white);
-		bodyPanel.setLayout(null);
+		bodyPanel.setLayout(new GridLayout(1,1));
 		
 		glovesPanel = new JPanel();
 		glovesPanel.setSize(75, 50);
@@ -86,16 +86,25 @@ public class ItemsScreen extends ActiveScreen
 		
 		this.add(itemsBackground);
 		drawEquippedHelmetSpace();
+		drawEquippedBodySpace();
 	}
 	
 	void drawEquippedHelmetSpace()
 	{
 		headPanel.removeAll();
-		ImageIcon helmImage = new ImageIcon(frame.user.inventory.equippedHelmet.image);
-		Image img = helmImage.getImage();  
-		Image newimg = img.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);  
-		helmImage = new ImageIcon(newimg);  
+		ImageIcon helmImage = frame.user.inventory.equippedHelmet.getImage();
+		
 		headPanel.add(new JLabel(helmImage));
+		this.repaint();
+		this.setVisible(true);
+	}
+	
+	void drawEquippedBodySpace()
+	{
+		bodyPanel.removeAll();
+		ImageIcon bodyImage = frame.user.inventory.equippedBody.getImage();
+		
+		bodyPanel.add(new JLabel(bodyImage));
 		this.repaint();
 		this.setVisible(true);
 	}

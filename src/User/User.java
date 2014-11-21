@@ -2,15 +2,44 @@ package User;
 
 public class User 
 {
+	String name;
 	public int money;
 	public Inventory inventory;
 	
 	public User()
 	{
+		name = "DEFAULT";
 		money = 5000;
 		inventory = new Inventory();
 		Helmet helm = new Helmet();
-		inventory.addHelmet(helm);
-		inventory.equippedHelmet = inventory.getHelmet("Fantasy Helmet");
+		Body body = new Body();
+		inventory.add(helm, ArmorType.Helmet);
+		inventory.add(body, ArmorType.Body);
+		inventory.equip("Fantasy Helmet", ArmorType.Helmet);
+		inventory.equip("Dragon Body", ArmorType.Body);
+	}
+	
+	public User(String name, int money)
+	{
+		this.name = name;
+		this.money = money;
+	}
+	
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+	public String getName()
+	{
+		return name;
+	}
+	
+	public void setMoney(int money)
+	{
+		this.money = money;
+	}
+	public int getMoney()
+	{
+		return money;
 	}
 }
