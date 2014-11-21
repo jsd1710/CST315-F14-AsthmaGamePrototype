@@ -69,68 +69,32 @@ public class MenuScreen extends JFrame implements ActionListener
 		
 		if (action.equals("World"))
 		{
-			this.remove(activeScreen);
-			activeScreen = new MapScreen(this);
-			this.add(activeScreen);
-			activeScreen.repaint();
-			this.setVisible(true);
-			sidebar.resetButtonColors();
+			switchActiveScreen(new MapScreen(this));
 			sidebar.worldButton.setBackground(Color.gray);
 		}
 		else if (action.equals("Rewards"))
 		{
-			this.remove(activeScreen);
-			activeScreen = new RewardsScreen(this);
-			this.add(activeScreen);
-			activeScreen.repaint();
-			this.setVisible(true);
-			sidebar.resetButtonColors();
+			switchActiveScreen(new RewardsScreen(this));
 			sidebar.rewardsButton.setBackground(Color.gray);
 		}
 		else if (action.equals("Items"))
 		{
-			this.remove(activeScreen);
-			activeScreen = new ItemsScreen(this);
-			this.add(activeScreen);
-			activeScreen.repaint();
-			this.setVisible(true);
-			sidebar.resetButtonColors();
+			switchActiveScreen(new ItemsScreen(this));
 			sidebar.itemsButton.setBackground(Color.gray);
 		}
 		else if (action.equals("Store"))
 		{
-			this.remove(activeScreen);
-			activeScreen = new StoreScreen(this);
-			this.add(activeScreen);
-			activeScreen.repaint();
-			this.setVisible(true);
-			sidebar.resetButtonColors();
-			sidebar.worldButton.setBackground(Color.gray);
-			sidebar.resetButtonColors();
+			switchActiveScreen(new StoreScreen(this));
 			sidebar.storeButton.setBackground(Color.gray);
 		}
 		else if (action.equals("Stats"))
 		{
-			this.remove(activeScreen);
-			activeScreen = new StatsScreen(this);
-			this.add(activeScreen);
-			activeScreen.repaint();
-			this.setVisible(true);
-			sidebar.resetButtonColors();
-			sidebar.worldButton.setBackground(Color.gray);
-			sidebar.resetButtonColors();
+			switchActiveScreen(new StatsScreen(this));
 			sidebar.statsButton.setBackground(Color.gray);
 		}
 		else if (action.equals("Settings"))
 		{
-			this.remove(activeScreen);
-			activeScreen = new SettingsScreen(this);
-			this.add(activeScreen);
-			activeScreen.repaint();
-			this.setVisible(true);
-			sidebar.resetButtonColors();
-			sidebar.worldButton.setBackground(Color.gray);
-			sidebar.resetButtonColors();
+			switchActiveScreen(new SettingsScreen(this));
 			sidebar.settingsButton.setBackground(Color.gray);
 		}
 		else if (action.equals("Log Off"))
@@ -139,5 +103,15 @@ public class MenuScreen extends JFrame implements ActionListener
 			sidebar.resetButtonColors();
 			sidebar.logOffButton.setBackground(Color.gray);
 		}
+	}
+	
+	void switchActiveScreen(ActiveScreen switchToThis)
+	{
+		this.remove(activeScreen);
+		activeScreen = switchToThis;
+		this.add(activeScreen);
+		activeScreen.repaint();
+		this.setVisible(true);
+		sidebar.resetButtonColors();
 	}
 }
