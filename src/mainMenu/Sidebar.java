@@ -1,22 +1,21 @@
 package mainMenu;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 public class Sidebar extends JPanel
 {
 	MenuScreen frame;
+	Color normalButtonColor;
 	
-	JButton worldButton;
-	JButton rewardsButton;
-	JButton itemsButton;
-	JButton storeButton;
-	JButton statsButton;
-	JButton settingsButton;
-	JButton logOffButton;
+	public JButton worldButton;
+	public JButton rewardsButton;
+	public JButton itemsButton;
+	public JButton storeButton;
+	public JButton statsButton;
+	public JButton settingsButton;
+	public JButton logOffButton;
 	
 	Dimension maxButtonDimension;
 	
@@ -56,6 +55,7 @@ public class Sidebar extends JPanel
 		logOffButton = new JButton("Log Off");
 		logOffButton.setActionCommand("Log Off");
 		
+		normalButtonColor = worldButton.getBackground();
 		
 		this.add(worldButton,BorderLayout.PAGE_START);
 		this.add(rewardsButton,BorderLayout.PAGE_START);
@@ -77,5 +77,35 @@ public class Sidebar extends JPanel
 		logOffButton.addActionListener(this.frame);
 	}
 	
-	
+	void resetButtonColors()
+	{
+		if (worldButton.getBackground() == Color.gray)
+		{
+			worldButton.setBackground(normalButtonColor);
+		}
+		else if (rewardsButton.getBackground() == Color.gray)
+		{
+			rewardsButton.setBackground(normalButtonColor);
+		}
+		else if (itemsButton.getBackground() == Color.gray)
+		{
+			itemsButton.setBackground(normalButtonColor);
+		}
+		else if (storeButton.getBackground() == Color.gray)
+		{
+			storeButton.setBackground(normalButtonColor);
+		}
+		else if (statsButton.getBackground() == Color.gray)
+		{
+			statsButton.setBackground(normalButtonColor);
+		}
+		else if (settingsButton.getBackground() == Color.gray)
+		{
+			settingsButton.setBackground(normalButtonColor);
+		}
+		else if (logOffButton.getBackground() == Color.gray)
+		{
+			logOffButton.setBackground(normalButtonColor);
+		}
+	}
 }

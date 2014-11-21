@@ -1,5 +1,6 @@
 package mainMenu;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +11,7 @@ import javax.swing.JPanel;
 
 public class MenuScreen extends JFrame implements ActionListener
 {
-	JPanel sidebar;
+	Sidebar sidebar;
 	ActiveScreen activeScreen;
 	JPanel pane;
 	GroupLayout gl;
@@ -38,6 +39,7 @@ public class MenuScreen extends JFrame implements ActionListener
 		//Screen modules
 		sidebar = new Sidebar(this);
 		activeScreen = new MapScreen(this);
+		sidebar.worldButton.setBackground(Color.gray);
 		
 		//Adding to content pane
 		this.add(sidebar);
@@ -72,10 +74,18 @@ public class MenuScreen extends JFrame implements ActionListener
 			this.add(activeScreen);
 			activeScreen.repaint();
 			this.setVisible(true);
+			sidebar.resetButtonColors();
+			sidebar.worldButton.setBackground(Color.gray);
 		}
 		else if (action.equals("Rewards"))
 		{
-			System.out.println("Rewards");
+			this.remove(activeScreen);
+			activeScreen = new RewardsScreen(this);
+			this.add(activeScreen);
+			activeScreen.repaint();
+			this.setVisible(true);
+			sidebar.resetButtonColors();
+			sidebar.rewardsButton.setBackground(Color.gray);
 		}
 		else if (action.equals("Items"))
 		{
@@ -84,22 +94,32 @@ public class MenuScreen extends JFrame implements ActionListener
 			this.add(activeScreen);
 			activeScreen.repaint();
 			this.setVisible(true);
+			sidebar.resetButtonColors();
+			sidebar.itemsButton.setBackground(Color.gray);
 		}
 		else if (action.equals("Store"))
 		{
 			System.out.println("Store");
+			sidebar.resetButtonColors();
+			sidebar.storeButton.setBackground(Color.gray);
 		}
 		else if (action.equals("Stats"))
 		{
 			System.out.println("Stats");
+			sidebar.resetButtonColors();
+			sidebar.statsButton.setBackground(Color.gray);
 		}
 		else if (action.equals("Settings"))
 		{
 			System.out.println("Settings");
+			sidebar.resetButtonColors();
+			sidebar.settingsButton.setBackground(Color.gray);
 		}
 		else if (action.equals("Log Off"))
 		{
 			System.out.println("Log Off");
+			sidebar.resetButtonColors();
+			sidebar.logOffButton.setBackground(Color.gray);
 		}
 	}
 }
