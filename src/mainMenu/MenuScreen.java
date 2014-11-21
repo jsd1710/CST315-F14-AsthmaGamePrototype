@@ -99,19 +99,37 @@ public class MenuScreen extends JFrame implements ActionListener
 		}
 		else if (action.equals("Store"))
 		{
-			System.out.println("Store");
+			this.remove(activeScreen);
+			activeScreen = new StoreScreen(this);
+			this.add(activeScreen);
+			activeScreen.repaint();
+			this.setVisible(true);
+			sidebar.resetButtonColors();
+			sidebar.worldButton.setBackground(Color.gray);
 			sidebar.resetButtonColors();
 			sidebar.storeButton.setBackground(Color.gray);
 		}
 		else if (action.equals("Stats"))
 		{
-			System.out.println("Stats");
+			this.remove(activeScreen);
+			activeScreen = new StatsScreen(this);
+			this.add(activeScreen);
+			activeScreen.repaint();
+			this.setVisible(true);
+			sidebar.resetButtonColors();
+			sidebar.worldButton.setBackground(Color.gray);
 			sidebar.resetButtonColors();
 			sidebar.statsButton.setBackground(Color.gray);
 		}
 		else if (action.equals("Settings"))
 		{
-			System.out.println("Settings");
+			this.remove(activeScreen);
+			activeScreen = new SettingsScreen(this);
+			this.add(activeScreen);
+			activeScreen.repaint();
+			this.setVisible(true);
+			sidebar.resetButtonColors();
+			sidebar.worldButton.setBackground(Color.gray);
 			sidebar.resetButtonColors();
 			sidebar.settingsButton.setBackground(Color.gray);
 		}
