@@ -8,6 +8,7 @@ import javax.swing.*;
 public class MapScreen extends ActiveScreen
 {
 	JPanel worldBar;
+	
 	JButton world1Button;
 	JButton world2Button;
 	JButton world3Button;
@@ -32,8 +33,8 @@ public class MapScreen extends ActiveScreen
 		worldBar.setSize(635, 25);
 		worldBar.setLocation(5, 5);
 		worldBar.setBackground(Color.black);
-		
 		worldBar.setLayout(new GridLayout(1,6,10,0));
+		
 		world1Button = new JButton("World 1");
 		world2Button = new JButton("World 2");
 		world3Button = new JButton("World 3");
@@ -47,7 +48,9 @@ public class MapScreen extends ActiveScreen
 		worldBar.add(world4Button);
 		worldBar.add(world5Button);
 		worldBar.add(worldEndlessButton);
+		
 		this.add(worldBar);
+		
 		this.createCurrencyBar();
 	}
 }

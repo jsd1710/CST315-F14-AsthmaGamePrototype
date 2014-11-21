@@ -76,6 +76,7 @@ public class ItemsScreen extends ActiveScreen
 		itemsBackground.add(itemsPanel);
 		itemsBackground.add(legsPanel);
 		itemsBackground.add(bootsPanel);
+		
 		this.add(itemsBackground);
 	}
 }

@@ -24,9 +24,5 @@ public abstract class ActiveScreen extends JPanel
 		currencyBar.add(playerCurrency);
 		
 		this.add(currencyBar);
-		
-		//currencyBar.setVisible(true);
-		//this.repaint();
-		//this.setVisible(true);
 	}
 }

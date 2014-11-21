@@ -9,13 +9,13 @@ public class Sidebar extends JPanel
 	MenuScreen frame;
 	Color normalButtonColor;
 	
-	public JButton worldButton;
-	public JButton rewardsButton;
-	public JButton itemsButton;
-	public JButton storeButton;
-	public JButton statsButton;
-	public JButton settingsButton;
-	public JButton logOffButton;
+	JButton worldButton;
+	JButton rewardsButton;
+	JButton itemsButton;
+	JButton storeButton;
+	JButton statsButton;
+	JButton settingsButton;
+	JButton logOffButton;
 	
 	Dimension maxButtonDimension;
 	
