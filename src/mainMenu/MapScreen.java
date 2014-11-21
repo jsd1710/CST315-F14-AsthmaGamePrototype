@@ -23,12 +23,13 @@ public class MapScreen extends ActiveScreen
 	
 	public void initUI()
 	{
-		this.setSize(650, 600);
+		this.setSize(650, 575);
 		this.setLocation(150, 0);
-		this.setBackground(Color.white);
+		this.setBackground(Color.gray);
+		this.setLayout(null);
 		
 		worldBar = new JPanel();
-		worldBar.setSize(635, 50);
+		worldBar.setSize(635, 25);
 		worldBar.setLocation(5, 5);
 		worldBar.setBackground(Color.black);
 		
@@ -47,5 +48,6 @@ public class MapScreen extends ActiveScreen
 		worldBar.add(world5Button);
 		worldBar.add(worldEndlessButton);
 		this.add(worldBar);
+		this.createCurrencyBar();
 	}
 }

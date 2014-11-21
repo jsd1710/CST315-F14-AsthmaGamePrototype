@@ -29,14 +29,10 @@ public class Sidebar extends JPanel
 	public void initSidebar()
 	{
 		//Sidebar panel settings
-		this.setSize(150, 600);
+		this.setSize(150, 575);
 		this.setLocation(0, 0);
 		this.setBackground(Color.blue);
 		this.setLayout(new GridLayout(10,1,0,10));
-		
-		maxButtonDimension = new Dimension();
-		maxButtonDimension.width = this.getWidth();
-		maxButtonDimension.height = 25;
 		
 		//Button initializations
 		worldButton = new JButton("World");
@@ -66,6 +62,7 @@ public class Sidebar extends JPanel
 		this.add(itemsButton,BorderLayout.PAGE_START);
 		this.add(storeButton,BorderLayout.PAGE_START);
 		this.add(statsButton,BorderLayout.PAGE_START);
+		this.add(Box.createVerticalGlue());
 		this.add(Box.createVerticalGlue());
 		this.add(Box.createVerticalGlue());
 		this.add(settingsButton,BorderLayout.PAGE_START);

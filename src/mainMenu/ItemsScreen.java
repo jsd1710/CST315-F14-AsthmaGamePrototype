@@ -15,9 +15,10 @@ public class ItemsScreen extends ActiveScreen
 	}
 	public void initUI()
 	{
-		this.setSize(650, 600);
+		this.setSize(650, 575);
 		this.setLocation(150, 0);
-		this.setBackground(Color.gray);
+		this.setBackground(Color.white);
+		this.setLayout(null);
 		this.createCurrencyBar();
 	}
 }
