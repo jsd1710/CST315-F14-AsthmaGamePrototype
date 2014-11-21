@@ -27,7 +27,7 @@ public class StoreScreen extends ActiveScreen
 		
 		storeSidebar = new JPanel();
 		storeSidebar.setSize(150, this.currencyBar.getY()-10);
-		storeSidebar.setLocation(25, 5);
+		storeSidebar.setLocation(10, 5);
 		storeSidebar.setBackground(Color.blue);
 		storeSidebar.setLayout(new GridLayout(1,7));
 		

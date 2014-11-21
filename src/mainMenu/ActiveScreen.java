@@ -15,7 +15,7 @@ public abstract class ActiveScreen extends JPanel
 	{
 		currencyBar = new JPanel();
 		currencyBar.setSize(125, 25);
-		currencyBar.setLocation((int) (this.getWidth()*0.98-currencyBar.getWidth()), (int) (this.getHeight()*0.98-currencyBar.getHeight()));
+		currencyBar.setLocation(this.getWidth()-currencyBar.getWidth() - 10, this.getHeight()-currencyBar.getHeight()-10);
 		currencyBar.setBackground(Color.blue);
 		currencyBar.setLayout(new GridLayout(2,1));
 		
