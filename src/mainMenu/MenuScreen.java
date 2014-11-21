@@ -69,7 +69,7 @@ public class MenuScreen extends JFrame implements ActionListener
 			this.remove(activeScreen);
 			activeScreen = new MapScreen(this);
 			this.add(activeScreen);
-			this.repaint();
+			activeScreen.repaint();
 			this.setVisible(true);
 		}
 		else if (action.equals("Rewards"))
@@ -81,7 +81,7 @@ public class MenuScreen extends JFrame implements ActionListener
 			this.remove(activeScreen);
 			activeScreen = new ItemsScreen(this);
 			this.add(activeScreen);
-			this.repaint();
+			activeScreen.repaint();
 			this.setVisible(true);
 		}
 		else if (action.equals("Store"))
