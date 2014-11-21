@@ -1,6 +1,13 @@
 package mainMenu;
 
 import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.io.IOException;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class ItemsScreen extends ActiveScreen 
@@ -38,7 +45,7 @@ public class ItemsScreen extends ActiveScreen
 		headPanel.setSize(50, 50);
 		headPanel.setLocation(itemsBackground.getWidth()/2-headPanel.getWidth()/2, (int) (itemsBackground.getHeight()*0.10));
 		headPanel.setBackground(Color.white);
-		headPanel.setLayout(null);
+		headPanel.setLayout(new GridLayout(1,1));
 		
 		bodyPanel = new JPanel();
 		bodyPanel.setSize(75, 125);
@@ -78,5 +85,18 @@ public class ItemsScreen extends ActiveScreen
 		itemsBackground.add(bootsPanel);
 		
 		this.add(itemsBackground);
+		drawEquippedHelmetSpace();
+	}
+	
+	void drawEquippedHelmetSpace()
+	{
+		headPanel.removeAll();
+		ImageIcon helmImage = new ImageIcon(frame.user.inventory.equippedHelmet.image);
+		Image img = helmImage.getImage();  
+		Image newimg = img.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);  
+		helmImage = new ImageIcon(newimg);  
+		headPanel.add(new JLabel(helmImage));
+		this.repaint();
+		this.setVisible(true);
 	}
 }
