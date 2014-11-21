@@ -1,13 +1,12 @@
 package mainMenu;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.GroupLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class MenuScreen extends JFrame implements ActionListener
 {
@@ -15,9 +14,11 @@ public class MenuScreen extends JFrame implements ActionListener
 	ActiveScreen activeScreen;
 	JPanel pane;
 	GroupLayout gl;
+	User.User user;
 	
 	MenuScreen() 
 	{
+		user = new User.User();
 		initUI();
 	}
 	

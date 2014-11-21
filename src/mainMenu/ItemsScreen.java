@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 public class ItemsScreen extends ActiveScreen 
 {
@@ -16,6 +17,7 @@ public class ItemsScreen extends ActiveScreen
 	{
 		this.setSize(650, 600);
 		this.setLocation(150, 0);
-		this.setBackground(Color.white);
+		this.setBackground(Color.gray);
+		this.createCurrencyBar();
 	}
 }
