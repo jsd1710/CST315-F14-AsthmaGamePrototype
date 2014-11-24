@@ -1,20 +1,19 @@
 package User;
 
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-public class Helmet extends Gear
+public class Shoes extends Gear
 {
-	Helmet()
+	Shoes()
 	{
-		name = "Fantasy Helmet";
+		name = "Demon Hunter Boots";
 		try
 		{
-			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/FantasyHelmet.jpg")));
+			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/demonhunter_boots.png")));
 		}
 		catch (IOException ex)
 		{
@@ -22,7 +21,7 @@ public class Helmet extends Gear
 		}
 	}
 	
-	Helmet(String name, ImageIcon image)
+	Shoes(String name, ImageIcon image)
 	{
 		this.name = name;
 		this.image = image;
@@ -35,14 +34,14 @@ public class Helmet extends Gear
 		{
 			//Convert to 50x50 Icon
 			Image img = image.getImage();  
-			Image newimg = img.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);  
+			Image newimg = img.getScaledInstance(50, 75,  java.awt.Image.SCALE_SMOOTH);  
 			image = new ImageIcon(newimg); 
 			
 			return image;
 		}
 		else
 		{
-			System.out.println("USER HAS NO HELMET EQUIPPED!");
+			System.out.println("USER HAS NO LEG PIECE EQUIPPED!");
 			return null;
 		}
 	}
@@ -56,7 +55,7 @@ public class Helmet extends Gear
 		}
 		else
 		{
-			System.out.println("EQUIPPED HELMET HAS NOT BEEN GIVEN A NAME");
+			System.out.println("EQUIPPED LEG PIECE HAS NOT BEEN GIVEN A NAME");
 			return null;
 		}
 	}

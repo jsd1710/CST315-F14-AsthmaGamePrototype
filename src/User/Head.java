@@ -6,14 +6,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-public class Body extends Gear
+public class Head extends Gear
 {
-	Body()
+	Head()
 	{
-		name = "Dragon Body";
+		name = "Fantasy Helmet";
 		try
 		{
-			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/hydraScaleChestPiece.png")));
+			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/FantasyHelmet.jpg")));
 		}
 		catch (IOException ex)
 		{
@@ -21,7 +21,7 @@ public class Body extends Gear
 		}
 	}
 	
-	Body(String name, ImageIcon image)
+	Head(String name, ImageIcon image)
 	{
 		this.name = name;
 		this.image = image;
@@ -34,14 +34,14 @@ public class Body extends Gear
 		{
 			//Convert to 50x50 Icon
 			Image img = image.getImage();  
-			Image newimg = img.getScaledInstance(75, 125,  java.awt.Image.SCALE_SMOOTH);  
+			Image newimg = img.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);  
 			image = new ImageIcon(newimg); 
 			
 			return image;
 		}
 		else
 		{
-			System.out.println("USER HAS NO CHEST PIECE EQUIPPED!");
+			System.out.println("USER HAS NO HELMET EQUIPPED!");
 			return null;
 		}
 	}
@@ -55,7 +55,7 @@ public class Body extends Gear
 		}
 		else
 		{
-			System.out.println("EQUIPPED CHEST PIECE HAS NOT BEEN GIVEN A NAME");
+			System.out.println("EQUIPPED HELMET HAS NOT BEEN GIVEN A NAME");
 			return null;
 		}
 	}

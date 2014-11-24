@@ -10,13 +10,29 @@ public class User
 	{
 		name = "DEFAULT";
 		money = 5000;
+		
 		inventory = new Inventory();
-		Helmet helm = new Helmet();
+		
+		Head helm = new Head();
 		Body body = new Body();
-		inventory.add(helm, ArmorType.Helmet);
+		Gloves gloves = new Gloves();
+		Items items = new Items();
+		Legs legs = new Legs();
+		Shoes shoes = new Shoes();
+		
+		inventory.add(helm, ArmorType.Head);
 		inventory.add(body, ArmorType.Body);
-		inventory.equip("Fantasy Helmet", ArmorType.Helmet);
+		inventory.add(gloves, ArmorType.Gloves);
+		inventory.add(items, ArmorType.Items);
+		inventory.add(legs, ArmorType.Legs);
+		inventory.add(shoes, ArmorType.Shoes);
+		
+		inventory.equip("Fantasy Helmet", ArmorType.Head);
 		inventory.equip("Dragon Body", ArmorType.Body);
+		inventory.equip("Demon Hunter Gloves", ArmorType.Gloves);
+		inventory.equip("Demon Hunter Quiver", ArmorType.Items);
+		inventory.equip("Legendary Pants", ArmorType.Legs);
+		inventory.equip("Demon Hunter Boots", ArmorType.Shoes);
 	}
 	
 	public User(String name, int money)

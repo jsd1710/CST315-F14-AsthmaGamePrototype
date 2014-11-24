@@ -4,26 +4,38 @@ import java.util.Hashtable;
 
 public class Inventory 
 {
-	Hashtable<String,Helmet> ownedHelmets;
-	public Helmet equippedHelmet;
-	Hashtable<String,Body> ownedBody;
+	Hashtable<String,Head> ownedHeadPieces;
+	public Head equippedHelmet;
+	Hashtable<String,Body> ownedBodyPieces;
 	public Body equippedBody;
+	Hashtable<String,Gloves> ownedGlovePieces;
+	public Gloves equippedGloves;
+	Hashtable<String,Items> ownedItemPieces;
+	public Items equippedItems;
+	Hashtable<String,Legs> ownedLegPieces;
+	public Legs equippedLegs;
+	Hashtable<String,Shoes> ownedShoePieces;
+	public Shoes equippedShoes;
 	
 	
 	Inventory()
 	{
-		ownedHelmets = new Hashtable<String,Helmet>();
-		ownedBody = new Hashtable<String,Body>();
+		ownedHeadPieces = new Hashtable<String,Head>();
+		ownedBodyPieces = new Hashtable<String,Body>();
+		ownedGlovePieces = new Hashtable<String,Gloves>();
+		ownedItemPieces = new Hashtable<String,Items>();
+		ownedLegPieces = new Hashtable<String,Legs>();
+		ownedShoePieces = new Hashtable<String,Shoes>();
 	}
 	
 	boolean equip(String name, ArmorType armorType)
 	{
 		switch (armorType)
 		{
-		case Helmet:
-			if (ownedHelmets.containsKey(name))
+		case Head:
+			if (ownedHeadPieces.containsKey(name))
 			{
-				equippedHelmet = ownedHelmets.get(name);
+				equippedHelmet = ownedHeadPieces.get(name);
 				return true;
 			}
 			else
@@ -32,14 +44,58 @@ public class Inventory
 				return false;
 			}
 		case Body:
-			if (ownedBody.containsKey(name))
+			if (ownedBodyPieces.containsKey(name))
 			{
-				equippedBody = ownedBody.get(name);
+				equippedBody = ownedBodyPieces.get(name);
 				return true;
 			}
 			else
 			{
 				System.out.println("You do not own the chest piece: " + name);
+				return false;
+			}
+		case Gloves:
+			if (ownedGlovePieces.containsKey(name))
+			{
+				equippedGloves = ownedGlovePieces.get(name);
+				return true;
+			}
+			else
+			{
+				System.out.println("You do not own the glove piece: " + name);
+				return false;
+			}
+		case Items:
+			if (ownedItemPieces.containsKey(name))
+			{
+				equippedItems = ownedItemPieces.get(name);
+				return true;
+			}
+			else
+			{
+				System.out.println("You do not own the item: " + name);
+				return false;
+			}
+		case Legs:
+			if (ownedLegPieces.containsKey(name))
+			{
+				equippedLegs = ownedLegPieces.get(name);
+				return true;
+			}
+			else
+			{
+				System.out.println("You do not own the leg piece: " + name);
+				return false;
+			}
+		case Shoes:
+			if (ownedShoePieces.containsKey(name))
+			{
+				equippedShoes = ownedShoePieces.get(name);
+				return true;
+			}
+			else
+			{
+				System.out.println("You do not own the shoe piece: " + name);
 				return false;
 			}
 		default:
@@ -54,12 +110,28 @@ public class Inventory
 	{
 		switch (armorType)
 		{
-		case Helmet:
-			ownedHelmets.put(gear.getName(), (Helmet) gear);
+		case Head:
+			ownedHeadPieces.put(gear.getName(), (Head) gear);
 			System.out.println(gear.getName() + " was added to your inventory!");
 			break;
 		case Body:
-			ownedBody.put(gear.getName(), (Body) gear);
+			ownedBodyPieces.put(gear.getName(), (Body) gear);
+			System.out.println(gear.getName() + " was added to your inventory!");
+			break;
+		case Gloves:
+			ownedGlovePieces.put(gear.getName(), (Gloves) gear);
+			System.out.println(gear.getName() + " was added to your inventory!");
+			break;
+		case Items:
+			ownedItemPieces.put(gear.getName(), (Items) gear);
+			System.out.println(gear.getName() + " was added to your inventory!");
+			break;
+		case Legs:
+			ownedLegPieces.put(gear.getName(), (Legs) gear);
+			System.out.println(gear.getName() + " was added to your inventory!");
+			break;
+		case Shoes:
+			ownedShoePieces.put(gear.getName(), (Shoes) gear);
 			System.out.println(gear.getName() + " was added to your inventory!");
 			break;
 		default:
@@ -71,11 +143,23 @@ public class Inventory
 	{
 		switch (armorType)
 		{
-		case Helmet:
-			ownedHelmets.remove(name);
+		case Head:
+			ownedHeadPieces.remove(name);
 			break;
 		case Body:
-			ownedBody.remove(name);
+			ownedBodyPieces.remove(name);
+			break;
+		case Gloves:
+			ownedGlovePieces.remove(name);
+			break;
+		case Items:
+			ownedItemPieces.remove(name);
+			break;
+		case Legs:
+			ownedLegPieces.remove(name);
+			break;
+		case Shoes:
+			ownedLegPieces.remove(name);
 			break;
 		default:
 			System.out.println("No valid armor removed from your inventory.");
@@ -87,10 +171,18 @@ public class Inventory
 	{
 		switch (armorType)
 		{
-		case Helmet:
-			return ownedHelmets.get(name);
+		case Head:
+			return ownedHeadPieces.get(name);
 		case Body:
-			return ownedBody.get(name);
+			return ownedBodyPieces.get(name);
+		case Gloves:
+			return ownedGlovePieces.get(name);
+		case Items:
+			return ownedItemPieces.get(name);
+		case Legs:
+			return ownedLegPieces.get(name);	
+		case Shoes:
+			return ownedShoePieces.get(name);	
 		default:
 			System.out.println("No valid armor was found.");
 			return null;	

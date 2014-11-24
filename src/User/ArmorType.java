@@ -2,5 +2,5 @@ package User;
 
 public enum ArmorType
 {
-	Helmet, Body
+	Head, Body, Gloves, Items, Legs, Shoes
 }
