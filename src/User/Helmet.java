@@ -14,7 +14,7 @@ public class Helmet extends Gear
 		name = "Fantasy Helmet";
 		try
 		{
-			image = new ImageIcon(ImageIO.read(new File("src/Resources/Images/FantasyHelmet.jpg")));
+			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/FantasyHelmet.jpg")));
 		}
 		catch (IOException ex)
 		{

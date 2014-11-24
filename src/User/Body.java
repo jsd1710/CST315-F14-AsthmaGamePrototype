@@ -14,7 +14,7 @@ public class Body extends Gear
 		name = "Dragon Body";
 		try
 		{
-			image = new ImageIcon(ImageIO.read(new File("src/Resources/Images/hydraScaleChestPiece.png")));
+			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/hydraScaleChestPiece.png")));
 		}
 		catch (IOException ex)
 		{
