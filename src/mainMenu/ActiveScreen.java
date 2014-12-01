@@ -19,10 +19,18 @@ public abstract class ActiveScreen extends JPanel
 		currencyBar.setBackground(Color.blue);
 		currencyBar.setLayout(new GridLayout(2,1));
 		
-		JLabel playerCurrency = new JLabel("Money: " + Integer.toString(frame.user.money));
-		playerCurrency.setForeground(Color.white);
-		currencyBar.add(playerCurrency);
+		JLabel currencyLabel = new JLabel("Money: " + Integer.toString(frame.user.money));
+		currencyLabel.setForeground(Color.white);
+		currencyBar.add(currencyLabel);
 		
+		currencyBar.add(currencyLabel);
 		this.add(currencyBar);
+	}
+	
+	void refreshCurrencyBar()
+	{
+		JLabel currencyLabel = (JLabel) currencyBar.getComponent(0);
+		
+		currencyLabel.setText("Money: " + Integer.toString(frame.user.money));
 	}
 }

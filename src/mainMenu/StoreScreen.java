@@ -1,12 +1,21 @@
 package mainMenu;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Map.Entry;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
+
+import Store.StoreItem;
+import User.ArmorType;
 
 public class StoreScreen extends ActiveScreen implements ActionListener
 {
@@ -71,19 +80,19 @@ public class StoreScreen extends ActiveScreen implements ActionListener
 		storeSidebar.add(itemButton);
 		storeSidebar.add(powerButton);
 		
-		headButton.addActionListener(this.frame);
-		bodyButton.addActionListener(this.frame);
-		bodyButton.addActionListener(this.frame);
-		glovesButton.addActionListener(this.frame);
-		shoesButton.addActionListener(this.frame);
-		itemButton.addActionListener(this.frame);
-		powerButton.addActionListener(this.frame);
+		headButton.addActionListener(this);
+		bodyButton.addActionListener(this);
+		bodyButton.addActionListener(this);
+		glovesButton.addActionListener(this);
+		shoesButton.addActionListener(this);
+		itemButton.addActionListener(this);
+		powerButton.addActionListener(this);
 		
 		itemsPanel = new JPanel();
 		itemsPanel.setLocation(storeSidebar.getX() + storeSidebar.getWidth() + 5, 5);
 		itemsPanel.setSize(this.getWidth()-itemsPanel.getX() - 10, this.currencyBar.getY()-10);
 		itemsPanel.setBackground(Color.blue);
-		itemsPanel.setLayout(new GridLayout(1,7));		
+		itemsPanel.setLayout(new GridBagLayout());		
 		
 		this.add(storeSidebar);	
 		this.add(itemsPanel);
@@ -95,7 +104,6 @@ public class StoreScreen extends ActiveScreen implements ActionListener
 		
 		if (action.equals("Head"))
 		{
-			System.out.println("bbtest");
 			this.drawAvailbleHeadItems();			
 		}			
 		else if (action.equals("Body"))
@@ -127,16 +135,62 @@ public class StoreScreen extends ActiveScreen implements ActionListener
 		{
 			this.drawAvailblePowerItems();
 		}	
+		else if (action.contains("head"))
+		{
+			String name = action.substring(4);
+			
+			if (this.frame.user.inventory.owns(name,ArmorType.Head))
+			{ //If player already owns the Head piece.
+				System.out.println("YOU ALREADY OWN: " + name);
+			}
+			else if (this.frame.user.money >= this.frame.store.headList.get(name).getPrice())
+			{ //If player can afford the Head piece.
+				//Adds a new Head piece to user's inventory.
+				this.frame.user.inventory.add(new User.Head(name,frame.store.headList.get(name).getImage(50, 50)), ArmorType.Head);
+				
+				//Removes the cost of Head piece from user's currency.
+				this.frame.user.money -= this.frame.store.headList.get(name).getPrice();
+				
+				System.out.println("You have purchased: " + name);
+				this.refreshCurrencyBar();
+			}
+			else
+			{ //If play cannot afford the Head piece.
+				System.out.println("CANNOT AFFORD: " + name);
+			}
+		}
 	}
 	
 	void drawAvailbleHeadItems()
 	{
+		itemsPanel.removeAll();
 		
+		GridBagConstraints c = new GridBagConstraints();
+		c.anchor = GridBagConstraints.NORTHWEST;
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 50;
+		c.weighty = 50;
+		
+		for (Entry<String, StoreItem> entry : frame.store.headList.entrySet())
+		{
+			JButton button = new JButton();
+			
+			button.setSize(50, 50);
+			button.setIcon(entry.getValue().getImage(50,50));
+			button.setBackground(null);
+			
+			button.setActionCommand("head" + entry.getValue().getName());
+			button.addActionListener(this);
+			
+			itemsPanel.add(button, c);
+		}
+		itemsPanel.repaint();
 	}
 	
 	void drawAvailbleBodyItems()
 	{
-		
+		itemsPanel.removeAll();
+		itemsPanel.repaint();
 	}
 	
 	void drawAvailbleLegItems()

@@ -1,0 +1,2 @@
+Fantasy Helmet,100,/Resources/Images/FantasyHelmet.jpg
+Samus Helmet,100,/Resources/Images/Samus_Helmet.png

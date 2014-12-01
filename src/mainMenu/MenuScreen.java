@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
@@ -16,10 +17,12 @@ public class MenuScreen extends JFrame implements ActionListener
 	JPanel pane;
 	GroupLayout gl;
 	User.User user;
+	Store.Store store;
 	
-	MenuScreen() 
+	MenuScreen() throws IOException 
 	{
 		user = new User.User();
+		store = new Store.Store();
 		initUI();
 	}
 	
@@ -56,8 +59,16 @@ public class MenuScreen extends JFrame implements ActionListener
             @Override
             public void run() 
             {
-                MenuScreen ex = new MenuScreen();
-                ex.setVisible(true);
+                MenuScreen ex;
+				try 
+				{
+					ex = new MenuScreen();
+					ex.setVisible(true);
+				} 
+				catch (IOException e) 
+				{
+					e.printStackTrace();
+				}
             }
         });
 	}

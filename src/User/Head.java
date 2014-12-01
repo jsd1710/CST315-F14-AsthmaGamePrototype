@@ -8,20 +8,13 @@ import javax.swing.ImageIcon;
 
 public class Head extends Gear
 {
-	Head()
+	public Head()
 	{
-		name = "Fantasy Helmet";
-		try
-		{
-			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/FantasyHelmet.jpg")));
-		}
-		catch (IOException ex)
-		{
-			ex.printStackTrace();
-		}
+		name = "EMPTY";
+		image = new ImageIcon(Image.class.getResource("/Resources/Images/EMPTY.png"));
 	}
 	
-	Head(String name, ImageIcon image)
+	public Head(String name, ImageIcon image)
 	{
 		this.name = name;
 		this.image = image;

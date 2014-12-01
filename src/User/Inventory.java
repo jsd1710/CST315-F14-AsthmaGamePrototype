@@ -106,7 +106,7 @@ public class Inventory
 		
 	}
 	
-	void add(Gear gear, ArmorType armorType)
+	public void add(Gear gear, ArmorType armorType)
 	{
 		switch (armorType)
 		{
@@ -186,6 +186,29 @@ public class Inventory
 		default:
 			System.out.println("No valid armor was found.");
 			return null;	
+		}
+		
+	}
+	
+	public boolean owns(String name, ArmorType armorType)
+	{
+		switch (armorType)
+		{
+		case Head:
+			return ownedHeadPieces.containsKey(name);
+		case Body:
+			return ownedBodyPieces.containsKey(name);
+		case Gloves:
+			return ownedGlovePieces.containsKey(name);
+		case Items:
+			return ownedItemPieces.containsKey(name);
+		case Legs:
+			return ownedLegPieces.containsKey(name);	
+		case Shoes:
+			return ownedShoePieces.containsKey(name);	
+		default:
+			System.out.println("No valid armor was found.");
+			return false;	
 		}
 		
 	}

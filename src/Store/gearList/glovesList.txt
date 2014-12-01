@@ -1,0 +1,1 @@
+Demon Hunter Gloves,100,/Resources/Images/demonhunter_gloves.png

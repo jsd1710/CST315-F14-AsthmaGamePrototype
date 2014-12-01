@@ -1,48 +1,57 @@
 package Store;
 
+import java.awt.Image;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
 public class StoreItem 
 {
-	private static String name;
-	private static double price;
-	private static String path;
+	private String name;
+	private int price;
+	private ImageIcon image;
 	
 	public StoreItem()
 	{
 		name = null;
 		price = 0;
-		path = null;
+		image = new ImageIcon();
 	}
 	
-	public StoreItem(String nme,double pce,String pth)
+	public StoreItem(String name,int price,String path) throws IOException
 	{
-		name = nme;
-		price = pce;
-		path = pth;
+		this.name = name;
+		this.price = price;
+		this.image = new ImageIcon(ImageIO.read(Image.class.getResource(path)));
 	}
 		
-	public StoreItem(double pce,String pth)
+	public StoreItem(int price,String path) throws IOException
 	{
-		 price = pce;
-		 path = pth;
+		 this.price = price;
+		 this.image = new ImageIcon(ImageIO.read(Image.class.getResource(path)));
 	}
 	
-	public static void setPrice(double pce)
+	public void setPrice(int price)
 	{
-		price = pce;
+		this.price = price;
 	}
-	public double getPRice()
+	public int getPrice()
 	{
 		return price;
 	}
 	
-	public static void setPath(String pth)
+	public void setImage(String path) throws IOException
 	{
-		path = pth;
+		this.image = new ImageIcon(ImageIO.read(Image.class.getResource(path)));
 	}
 	
-	public String getPath()
+	public ImageIcon getImage(int width, int height)
 	{
-		return path;
+		Image img = image.getImage();  
+		Image newimg = img.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);  
+		image = new ImageIcon(newimg); 
+		return image;
 	}
 	
 	public String getName()
@@ -50,9 +59,9 @@ public class StoreItem
 		return name;
 	}
 	
-	public static void setName(String nme)
+	public void setName(String name)
 	{
-		name = nme;
+		this.name = name;
 	}
 	
 }

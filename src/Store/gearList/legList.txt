@@ -1,0 +1,1 @@
+Legendary Pants,100,/Resources/Images/Legendary_Pants.jpg

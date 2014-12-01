@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.StringTokenizer;
@@ -13,31 +14,52 @@ import User.Head;
 public class Store 
 {
 	//StoreItem, general class that meets any Item type with prices of item and path to image's directory
-	Hashtable<String,StoreItem> headList = new Hashtable<String,StoreItem>();
-	Hashtable<String,StoreItem> bodyList = new Hashtable<String,StoreItem>();
-	Hashtable<String,StoreItem> glovesList = new Hashtable<String,StoreItem>();
-	Hashtable<String,StoreItem> legList = new Hashtable<String,StoreItem>();
-	Hashtable<String,StoreItem> itemList = new Hashtable<String,StoreItem>();
-	Hashtable<String,StoreItem> powerList = new Hashtable<String,StoreItem>();
-	Hashtable<String,StoreItem> shoeList = new Hashtable<String,StoreItem>();
+	public Hashtable<String,StoreItem> headList;
+	Hashtable<String,StoreItem> bodyList;
+	Hashtable<String,StoreItem> glovesList;
+	Hashtable<String,StoreItem> legList;
+	Hashtable<String,StoreItem> itemList;
+	Hashtable<String,StoreItem> powerList;
+	Hashtable<String,StoreItem> shoeList;
 	
-	public void readHeadList(String fileName) throws IOException 
+	public Store() throws IOException
+	{
+		headList = new Hashtable<String,StoreItem>();
+		bodyList = new Hashtable<String,StoreItem>();
+		glovesList = new Hashtable<String,StoreItem>();
+		legList = new Hashtable<String,StoreItem>();
+		itemList = new Hashtable<String,StoreItem>();
+		powerList = new Hashtable<String,StoreItem>();
+		shoeList = new Hashtable<String,StoreItem>();
+		
+		readHeadList();
+		readBodyList();
+		readLegList();
+		readGlovesList();
+		readItemList();
+		//readPowerList();
+		readShoeList();
+	}
+	
+	public void readHeadList() throws IOException 
 	{
 		
 		try
 		{
-			BufferedReader fin = new BufferedReader(new FileReader(new File("headList.rtf")));
+			BufferedReader fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Store/gearList/headList.txt")));
 			
 			String fileLine;
 			String[] attribute;
 			StoreItem item;
+			
 			//readlines until end of txt
 			while((fileLine = fin.readLine()) != null)
 			{
 				attribute = fileLine.split(",");
 				//attribute 0 = name, 1 = item price, 2 = item path when parsed
-				item = new StoreItem((attribute[0]),Double.parseDouble(attribute[1]),(attribute[2]));//name
+				item = new StoreItem((attribute[0]),Integer.parseInt(attribute[1]),(attribute[2]));//name
 				headList.put(attribute[0],item);
+				System.out.println("Added " + attribute[0] + " to the store!");
 			}
 			fin.close();
 		}
@@ -47,12 +69,12 @@ public class Store
 		}				
 	}	
 	
-	public void readBodyList(String fileName) throws IOException 
+	public void readBodyList() throws IOException 
 	{
 		
 		try
 		{
-			BufferedReader fin = new BufferedReader(new FileReader(new File("bodyList.rtf")));
+			BufferedReader fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Store/gearList/bodyList.txt")));
 			
 			String fileLine;
 			String[] attribute;
@@ -62,8 +84,9 @@ public class Store
 			{
 				attribute = fileLine.split(",");
 				//attribute 0 = name, 1 = item price, 2 = item path when parsed
-				item = new StoreItem((attribute[0]),Double.parseDouble(attribute[1]),(attribute[2]));//name
+				item = new StoreItem((attribute[0]),Integer.parseInt(attribute[1]),(attribute[2]));//name
 				bodyList.put(attribute[0],item);
+				System.out.println("Added " + attribute[0] + " to the store!");
 			}
 			fin.close();
 		}
@@ -73,12 +96,12 @@ public class Store
 		}				
 	}	
 	
-	public void readLegList(String fileName) throws IOException 
+	public void readLegList() throws IOException 
 	{
 		
 		try
 		{
-			BufferedReader fin = new BufferedReader(new FileReader(new File("legList.rtf")));
+			BufferedReader fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Store/gearList/legList.txt")));
 			
 			String fileLine;
 			String[] attribute;
@@ -88,8 +111,9 @@ public class Store
 			{
 				attribute = fileLine.split(",");
 				//attribute 0 = name, 1 = item price, 2 = item path when parsed
-				item = new StoreItem((attribute[0]),Double.parseDouble(attribute[1]),(attribute[2]));//name
+				item = new StoreItem((attribute[0]),Integer.parseInt(attribute[1]),(attribute[2]));//name
 				legList.put(attribute[0],item);
+				System.out.println("Added " + attribute[0] + " to the store!");
 			}
 			fin.close();
 		}
@@ -99,12 +123,12 @@ public class Store
 		}				
 	}	
 	
-	public void readGlovesList(String fileName) throws IOException 
+	public void readGlovesList() throws IOException 
 	{
 		
 		try
 		{
-			BufferedReader fin = new BufferedReader(new FileReader(new File("glovesList.rtf")));
+			BufferedReader fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Store/gearList/glovesList.txt")));
 			
 			String fileLine;
 			String[] attribute;
@@ -114,8 +138,9 @@ public class Store
 			{
 				attribute = fileLine.split(",");
 				//attribute 0 = name, 1 = item price, 2 = item path when parsed
-				item = new StoreItem((attribute[0]),Double.parseDouble(attribute[1]),(attribute[2]));//name
+				item = new StoreItem((attribute[0]),Integer.parseInt(attribute[1]),(attribute[2]));//name
 				glovesList.put(attribute[0],item);
+				System.out.println("Added " + attribute[0] + " to the store!");
 			}
 			fin.close();
 		}
@@ -125,12 +150,12 @@ public class Store
 		}				
 	}
 	
-	public void readItemList(String fileName) throws IOException 
+	public void readItemList() throws IOException 
 	{
 		
 		try
 		{
-			BufferedReader fin = new BufferedReader(new FileReader(new File("itemList.rtf")));
+			BufferedReader fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Store/gearList/itemList.txt")));
 			
 			String fileLine;
 			String[] attribute;
@@ -140,8 +165,9 @@ public class Store
 			{
 				attribute = fileLine.split(",");
 				//attribute 0 = name, 1 = item price, 2 = item path when parsed
-				item = new StoreItem((attribute[0]),Double.parseDouble(attribute[1]),(attribute[2]));//name
+				item = new StoreItem((attribute[0]),Integer.parseInt(attribute[1]),(attribute[2]));//name
 				itemList.put(attribute[0],item);
+				System.out.println("Added " + attribute[0] + " to the store!");
 			}
 			fin.close();
 		}
@@ -151,12 +177,12 @@ public class Store
 		}				
 	}	
 	
-	public void readPowerList(String fileName) throws IOException 
+	public void readPowerList() throws IOException 
 	{
 		
 		try
 		{
-			BufferedReader fin = new BufferedReader(new FileReader(new File("powerList.rtf")));
+			BufferedReader fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Store/gearList/bodyList.txt")));
 			
 			String fileLine;
 			String[] attribute;
@@ -166,8 +192,9 @@ public class Store
 			{
 				attribute = fileLine.split(",");
 				//attribute 0 = name, 1 = item price, 2 = item path when parsed
-				item = new StoreItem((attribute[0]),Double.parseDouble(attribute[1]),(attribute[2]));//name
+				item = new StoreItem((attribute[0]),Integer.parseInt(attribute[1]),(attribute[2]));//name
 				powerList.put(attribute[0],item);
+				System.out.println("Added " + attribute[0] + " to the store!");
 			}
 			fin.close();
 		}
@@ -177,12 +204,12 @@ public class Store
 		}				
 	}	
 	
-	public void readShoeList(String fileName) throws IOException 
+	public void readShoeList() throws IOException 
 	{
 		
 		try
 		{
-			BufferedReader fin = new BufferedReader(new FileReader(new File("shoeList.rtf")));
+			BufferedReader fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Store/gearList/shoeList.txt")));
 			
 			String fileLine;
 			String[] attribute;
@@ -192,8 +219,9 @@ public class Store
 			{
 				attribute = fileLine.split(",");
 				//attribute 0 = name, 1 = item price, 2 = item path when parsed
-				item = new StoreItem((attribute[0]),Double.parseDouble(attribute[1]),(attribute[2]));//name
+				item = new StoreItem((attribute[0]),Integer.parseInt(attribute[1]),(attribute[2]));//name
 				shoeList.put(attribute[0],item);
+				System.out.println("Added " + attribute[0] + " to the store!");
 			}
 			fin.close();
 		}

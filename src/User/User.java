@@ -27,7 +27,7 @@ public class User
 		inventory.add(legs, ArmorType.Legs);
 		inventory.add(shoes, ArmorType.Shoes);
 		
-		inventory.equip("Fantasy Helmet", ArmorType.Head);
+		inventory.equip("EMPTY", ArmorType.Head);
 		inventory.equip("Dragon Body", ArmorType.Body);
 		inventory.equip("Demon Hunter Gloves", ArmorType.Gloves);
 		inventory.equip("Demon Hunter Quiver", ArmorType.Items);
