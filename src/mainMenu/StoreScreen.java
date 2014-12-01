@@ -30,6 +30,8 @@ public class StoreScreen extends ActiveScreen implements ActionListener
 	JButton itemButton;
 	JButton powerButton;
 	
+	GridBagLayout gbl = new GridBagLayout();
+	
 	StoreScreen(MenuScreen frame)
 	{
 		this.frame = frame;
@@ -92,7 +94,7 @@ public class StoreScreen extends ActiveScreen implements ActionListener
 		itemsPanel.setLocation(storeSidebar.getX() + storeSidebar.getWidth() + 5, 5);
 		itemsPanel.setSize(this.getWidth()-itemsPanel.getX() - 10, this.currencyBar.getY()-10);
 		itemsPanel.setBackground(Color.blue);
-		itemsPanel.setLayout(new GridBagLayout());		
+		itemsPanel.setLayout(gbl);		
 		
 		this.add(storeSidebar);	
 		this.add(itemsPanel);
@@ -167,23 +169,25 @@ public class StoreScreen extends ActiveScreen implements ActionListener
 		
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.NORTHWEST;
-		c.fill = GridBagConstraints.BOTH;
-		c.weightx = 50;
-		c.weighty = 50;
+		
+		c.weightx = 1;
+		//c.fill = GridBagConstraints.BOTH;
 		
 		for (Entry<String, StoreItem> entry : frame.store.headList.entrySet())
 		{
-			JButton button = new JButton();
+			JButton button = new JButton(entry.getValue().getName());
 			
-			button.setSize(50, 50);
+			button.setSize(150, 50);
 			button.setIcon(entry.getValue().getImage(50,50));
 			button.setBackground(null);
 			
 			button.setActionCommand("head" + entry.getValue().getName());
 			button.addActionListener(this);
 			
-			itemsPanel.add(button, c);
+			gbl.setConstraints(button, c);
+			itemsPanel.add(button);
 		}
+		validate();
 		itemsPanel.repaint();
 	}
 	

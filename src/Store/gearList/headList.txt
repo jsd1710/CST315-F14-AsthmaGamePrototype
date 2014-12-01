@@ -1,2 +1,3 @@
 Fantasy Helmet,100,/Resources/Images/FantasyHelmet.jpg
 Samus Helmet,100,/Resources/Images/Samus_Helmet.png
+Metal King Helmet,500,/Resources/Images/Metal_King_Helmet.png
