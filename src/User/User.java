@@ -28,11 +28,11 @@ public class User
 		inventory.add(shoes, ArmorType.Shoes);
 		
 		inventory.equip("EMPTY", ArmorType.Head);
-		inventory.equip("Dragon Body", ArmorType.Body);
-		inventory.equip("Demon Hunter Gloves", ArmorType.Gloves);
-		inventory.equip("Demon Hunter Quiver", ArmorType.Items);
-		inventory.equip("Legendary Pants", ArmorType.Legs);
-		inventory.equip("Demon Hunter Boots", ArmorType.Shoes);
+		inventory.equip("EMPTY", ArmorType.Body);
+		inventory.equip("EMPTY", ArmorType.Gloves);
+		inventory.equip("EMPTY", ArmorType.Items);
+		inventory.equip("EMPTY", ArmorType.Legs);
+		inventory.equip("EMPTY", ArmorType.Shoes);
 	}
 	
 	public User(String name, int money)

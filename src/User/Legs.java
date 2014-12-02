@@ -10,10 +10,10 @@ public class Legs extends Gear
 {
 	Legs()
 	{
-		name = "Legendary Pants";
+		name = "EMPTY";
 		try
 		{
-			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/Legs/Legendary_Pants.jpg")));
+			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/EMPTY.png")));
 		}
 		catch (IOException ex)
 		{

@@ -150,12 +150,13 @@ public class StoreScreen extends ActiveScreen implements ActionListener
 			else if (this.frame.user.money >= this.frame.store.headList.get(name).getPrice())
 			{ //If player can afford the Head piece.
 				//Adds a new Head piece to user's inventory.
+				System.out.println("You have purchased: " + name);
 				this.frame.user.inventory.add(new User.Head(name,frame.store.headList.get(name).getImage(50, 50)), ArmorType.Head);
 				
 				//Removes the cost of Head piece from user's currency.
 				this.frame.user.money -= this.frame.store.headList.get(name).getPrice();
 				
-				System.out.println("You have purchased: " + name);
+				
 				this.refreshCurrencyBar();
 			}
 			else

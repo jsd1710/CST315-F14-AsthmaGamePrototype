@@ -10,10 +10,10 @@ public class Body extends Gear
 {
 	Body()
 	{
-		name = "Dragon Body";
+		name = "EMPTY";
 		try
 		{
-			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/Bodies/hydraScaleChestPiece.png")));
+			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/EMPTY.png")));
 		}
 		catch (IOException ex)
 		{
