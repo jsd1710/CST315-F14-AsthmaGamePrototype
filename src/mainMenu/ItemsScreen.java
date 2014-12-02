@@ -15,6 +15,17 @@ import javax.swing.JPanel;
 public class ItemsScreen extends ActiveScreen 
 {
 	JPanel itemsBackground;
+	JPanel ownedItemsBackground;
+	
+	//Buttons used for selecting what items to load
+	JButton headButton;
+	JButton bodyButton;
+	JButton legsButton;
+	JButton glovesButton;
+	JButton shoesButton;
+	JButton itemButton;
+	JButton powerButton;
+	
 	JButton headPanel;
 	JButton glovesPanel;
 	JButton bodyPanel;
@@ -42,6 +53,12 @@ public class ItemsScreen extends ActiveScreen
 		itemsBackground.setLocation(this.getWidth()-300, 5);
 		itemsBackground.setBackground(Color.blue);
 		itemsBackground.setLayout(null);
+		
+		ownedItemsBackground = new JPanel();
+		ownedItemsBackground.setSize(350,540);
+		ownedItemsBackground.setLocation(0,0);
+		ownedItemsBackground.setBackground(Color.gray);
+		ownedItemsBackground.setLayout(new GridLayout(3, 3));
 		
 		headPanel = new JButton();
 		headPanel.setSize(50, 50);
@@ -92,6 +109,7 @@ public class ItemsScreen extends ActiveScreen
 		itemsBackground.add(legsPanel);
 		itemsBackground.add(shoesPanel);
 		
+		this.add(ownedItemsBackground);
 		this.add(itemsBackground);
 		drawEquippedHeadSpace();
 		drawEquippedBodySpace();
@@ -155,5 +173,39 @@ public class ItemsScreen extends ActiveScreen
 		shoesPanel.add(new JLabel(shoesImage));
 		this.repaint();
 		this.setVisible(true);
+	}
+	
+	void pressedHeadSpace()
+	{
+		ownedItemsBackground.removeAll();
+		
+		ImageIcon headItems = frame.user.inventory.availbleHead.getImage();
+		
+		
+	}
+	
+	void pressedBodySpace()
+	{
+		
+	}
+	
+	void pressedGloveSpace()
+	{
+		
+	}
+	
+	void pressedLegSpace()
+	{
+		
+	}
+	
+	void pressedShoeSpace()
+	{
+		
+	}
+	
+	void pressedItemSpace()
+	{
+		
 	}
 }

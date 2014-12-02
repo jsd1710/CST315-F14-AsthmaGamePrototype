@@ -105,7 +105,7 @@ public class Inventory
 		}
 		
 	}
-	
+	//servers as buy method
 	public void add(Gear gear, ArmorType armorType)
 	{
 		switch (armorType)
