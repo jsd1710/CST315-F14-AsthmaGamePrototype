@@ -1,26 +1,19 @@
 package Store;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.StringTokenizer;
-
-import User.Head;
 
 public class Store 
 {
 	//StoreItem, general class that meets any Item type with prices of item and path to image's directory
 	public Hashtable<String,StoreItem> headList;
-	Hashtable<String,StoreItem> bodyList;
-	Hashtable<String,StoreItem> glovesList;
-	Hashtable<String,StoreItem> legList;
-	Hashtable<String,StoreItem> itemList;
-	Hashtable<String,StoreItem> powerList;
-	Hashtable<String,StoreItem> shoeList;
+	public Hashtable<String,StoreItem> bodyList;
+	public Hashtable<String,StoreItem> glovesList;
+	public Hashtable<String,StoreItem> legList;
+	public Hashtable<String,StoreItem> itemList;
+	public Hashtable<String,StoreItem> shoeList;
 	
 	public Store() throws IOException
 	{
@@ -29,7 +22,6 @@ public class Store
 		glovesList = new Hashtable<String,StoreItem>();
 		legList = new Hashtable<String,StoreItem>();
 		itemList = new Hashtable<String,StoreItem>();
-		powerList = new Hashtable<String,StoreItem>();
 		shoeList = new Hashtable<String,StoreItem>();
 		
 		readHeadList();
@@ -37,7 +29,6 @@ public class Store
 		readLegList();
 		readGlovesList();
 		readItemList();
-		//readPowerList();
 		readShoeList();
 	}
 	
@@ -167,33 +158,6 @@ public class Store
 				//attribute 0 = name, 1 = item price, 2 = item path when parsed
 				item = new StoreItem((attribute[0]),Integer.parseInt(attribute[1]),(attribute[2]));//name
 				itemList.put(attribute[0],item);
-				System.out.println("Added " + attribute[0] + " to the store!");
-			}
-			fin.close();
-		}
-		catch(Exception e)
-		{
-			 throw e;
-		}				
-	}	
-	
-	public void readPowerList() throws IOException 
-	{
-		
-		try
-		{
-			BufferedReader fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Store/gearList/bodyList.txt")));
-			
-			String fileLine;
-			String[] attribute;
-			StoreItem item;
-			//readlines until end of txt
-			while((fileLine = fin.readLine()) != null)
-			{
-				attribute = fileLine.split(",");
-				//attribute 0 = name, 1 = item price, 2 = item path when parsed
-				item = new StoreItem((attribute[0]),Integer.parseInt(attribute[1]),(attribute[2]));//name
-				powerList.put(attribute[0],item);
 				System.out.println("Added " + attribute[0] + " to the store!");
 			}
 			fin.close();

@@ -2,6 +2,7 @@ package mainMenu;
 
 import java.awt.Color;
 
+@SuppressWarnings("serial")
 public class StatsScreen extends ActiveScreen
 {
 	StatsScreen(MenuScreen frame)

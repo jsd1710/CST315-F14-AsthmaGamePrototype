@@ -2,6 +2,7 @@ package mainMenu;
 
 import java.awt.Color;
 
+@SuppressWarnings("serial")
 public class SettingsScreen extends ActiveScreen
 {
 	SettingsScreen(MenuScreen frame)

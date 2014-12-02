@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 public class MapScreen extends ActiveScreen
 {
 	JPanel worldBar;
