@@ -2,8 +2,7 @@ package mainMenu;
 
 import java.awt.Color;
 
-import javax.swing.JPanel;
-
+@SuppressWarnings("serial")
 public class RewardsScreen extends ActiveScreen
 {
 	RewardsScreen(MenuScreen frame)

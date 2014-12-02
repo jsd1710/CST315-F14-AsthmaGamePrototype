@@ -10,6 +10,7 @@ import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class MenuScreen extends JFrame implements ActionListener
 {
 	Sidebar sidebar;

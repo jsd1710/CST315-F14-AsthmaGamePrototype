@@ -2,18 +2,13 @@ package mainMenu;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Map.Entry;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -21,6 +16,7 @@ import javax.swing.SwingConstants;
 import Store.StoreItem;
 import User.ArmorType;
 
+@SuppressWarnings("serial")
 public class StoreScreen extends ActiveScreen implements ActionListener
 {
 	JPanel storeSidebar;

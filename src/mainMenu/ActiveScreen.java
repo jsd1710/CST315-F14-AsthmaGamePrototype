@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public abstract class ActiveScreen extends JPanel
 {
 	MenuScreen frame;
