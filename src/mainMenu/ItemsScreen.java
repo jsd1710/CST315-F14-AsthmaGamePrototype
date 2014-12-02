@@ -1,9 +1,12 @@
 package mainMenu;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.util.Map.Entry;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -11,6 +14,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import Store.StoreItem;
+import User.Head;
+import User.Inventory;
+
 
 public class ItemsScreen extends ActiveScreen 
 {
@@ -173,39 +181,88 @@ public class ItemsScreen extends ActiveScreen
 		shoesPanel.add(new JLabel(shoesImage));
 		this.repaint();
 		this.setVisible(true);
-	}
-	
-	void pressedHeadSpace()
+	} 
+		
+	void drawHeadInventory()
 	{
 		ownedItemsBackground.removeAll();
+		for(Entry<String,Head> entry : frame.user.inventory.ownedHeadPieces.entrySet())
+		{
+			JButton button = new JButton();
+			button.setLayout(new BorderLayout());
+			JLabel label1 = new JLabel(entry.getValue().getName());
+			button.add(BorderLayout.NORTH,label1);
+			button.setToolTipText(entry.getValue().getName());
+			//button.setIcon(entry.getValue().getImage(50,50));
+		}
 		
-		ImageIcon headItems = frame.user.inventory.availbleHead.getImage();
 		
-		
-	}
-	
-	void pressedBodySpace()
-	{
-		
-	}
-	
-	void pressedGloveSpace()
-	{
-		
-	}
-	
-	void pressedLegSpace()
-	{
+		ownedItemsBackground.repaint();
 		
 	}
 	
-	void pressedShoeSpace()
+	void drawBodyInventory()
 	{
-		
+		ownedItemsBackground.removeAll();
+		ownedItemsBackground.repaint();
 	}
 	
-	void pressedItemSpace()
+	void drawGloveInventory()
 	{
-		
+		ownedItemsBackground.removeAll();
+		ownedItemsBackground.repaint();
 	}
+	
+	void drawLegInventory()
+	{
+		ownedItemsBackground.removeAll();
+		ownedItemsBackground.repaint();
+	}
+	
+	void drawShoeInventory()
+	{
+		ownedItemsBackground.removeAll();
+		ownedItemsBackground.repaint();
+	}
+	
+	void drawItemInventory()
+	{
+		ownedItemsBackground.removeAll();
+		ownedItemsBackground.repaint();
+	}
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		String action = e.getActionCommand();
+		if (action.equals("Head"))
+		{
+			this.drawHeadInventory();			
+		}			
+		else if (action.equals("Body"))
+		{
+			this.drawBodyInventory();
+		}	
+		
+		else if (action.equals("Legs"))
+		{
+			this.drawLegInventory();
+		}	
+		
+		else if (action.equals("Gloves"))
+		{
+			this.drawGloveInventory();
+		}	
+		
+		else if (action.equals("Shoes"))
+		{
+			this.drawShoeInventory();
+		}	
+		
+		else if (action.equals("Item"))
+		{
+			this.drawItemInventory();
+		}	
+
+	}
+	
 }

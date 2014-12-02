@@ -4,17 +4,17 @@ import java.util.Hashtable;
 
 public class Inventory 
 {
-	Hashtable<String,Head> ownedHeadPieces;
+	public Hashtable<String,Head> ownedHeadPieces;
 	public Head equippedHelmet;
-	Hashtable<String,Body> ownedBodyPieces;
+	public Hashtable<String,Body> ownedBodyPieces;
 	public Body equippedBody;
-	Hashtable<String,Gloves> ownedGlovePieces;
+	public Hashtable<String,Gloves> ownedGlovePieces;
 	public Gloves equippedGloves;
-	Hashtable<String,Items> ownedItemPieces;
+	public Hashtable<String,Items> ownedItemPieces;
 	public Items equippedItems;
-	Hashtable<String,Legs> ownedLegPieces;
+	public Hashtable<String,Legs> ownedLegPieces;
 	public Legs equippedLegs;
-	Hashtable<String,Shoes> ownedShoePieces;
+	public Hashtable<String,Shoes> ownedShoePieces;
 	public Shoes equippedShoes;
 	
 	
