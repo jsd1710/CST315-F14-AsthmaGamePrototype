@@ -4,13 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 
-import java.awt.Image;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
 import java.util.Map.Entry;
 
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
@@ -23,11 +20,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 
-import Store.StoreItem;
+import User.ArmorType;
 import User.Head;
-import User.Inventory;
 
 
+@SuppressWarnings("serial")
 public class ItemsScreen extends ActiveScreen implements ActionListener
 {	
 	JPanel itemsBackground;
@@ -68,11 +65,10 @@ public class ItemsScreen extends ActiveScreen implements ActionListener
 		itemsBackground.setLocation(this.getWidth()-300, 5);
 		itemsBackground.setBackground(Color.blue);
 		itemsBackground.setLayout(null);
-		
 
 		ownedItemsBackground = new JPanel();
-		ownedItemsBackground.setSize(350,540);
-		ownedItemsBackground.setLocation(0,0);
+		ownedItemsBackground.setSize(itemsBackground.getX()-15,itemsBackground.getHeight());
+		ownedItemsBackground.setLocation(10,5);
 		ownedItemsBackground.setBackground(Color.gray);
 		ownedItemsBackground.setLayout(new GridLayout(3, 3));
 		
@@ -189,69 +185,54 @@ public class ItemsScreen extends ActiveScreen implements ActionListener
 		
 		this.add(ownedItemsBackground);
 		this.add(itemsBackground);
-		drawEquippedHeadSpace();
-		drawEquippedBodySpace();
-		drawEquippedGlovesSpace();
-		drawEquippedItemsSpace();
-		drawEquippedLegsSpace();
-		drawEquippedShoesSpace();
+		drawEquippedGear(ArmorType.Head);
+		drawEquippedGear(ArmorType.Body);
+		drawEquippedGear(ArmorType.Gloves);
+		drawEquippedGear(ArmorType.Items);
+		drawEquippedGear(ArmorType.Legs);
+		drawEquippedGear(ArmorType.Shoes);
 	}
 	
-	void drawEquippedHeadSpace()
+	void drawEquippedGear(ArmorType armorType)
 	{
-		headButton.removeAll();
-		ImageIcon headImage = frame.user.inventory.equippedHelmet.getImage();
+		switch (armorType)
+		{		
+		case Head:
+			headButton.removeAll();
+			ImageIcon headImage = frame.user.inventory.equippedHelmet.getImage();
+			headButton.add(new JLabel(headImage));
+			
+		case Body:
+			bodyButton.removeAll();
+			ImageIcon bodyImage = frame.user.inventory.equippedBody.getImage();
+			bodyButton.add(new JLabel(bodyImage));
+			
+		case Gloves:
+			glovesButton.removeAll();
+			ImageIcon glovesImage = frame.user.inventory.equippedGloves.getImage();
+			glovesButton.add(new JLabel(glovesImage));
+			
+		case Items:
+			itemsButton.removeAll();
+			ImageIcon itemsImage = frame.user.inventory.equippedItems.getImage();
+			itemsButton.add(new JLabel(itemsImage));
+			
+		case Legs:
+			legsButton.removeAll();
+			ImageIcon legsImage = frame.user.inventory.equippedLegs.getImage();
+			legsButton.add(new JLabel(legsImage));
+			
+		case Shoes:
+			shoesButton.removeAll();
+			ImageIcon shoesImage = frame.user.inventory.equippedShoes.getImage();
+			shoesButton.add(new JLabel(shoesImage));
+			
+		default:
+		}
 		
-		headButton.add(new JLabel(headImage));
 		this.repaint();
 		this.setVisible(true);
 	}
-	
-	void drawEquippedBodySpace()
-	{
-		bodyButton.removeAll();
-		ImageIcon bodyImage = frame.user.inventory.equippedBody.getImage();
-		
-		bodyButton.add(new JLabel(bodyImage));
-		this.repaint();
-		this.setVisible(true);
-	}
-	void drawEquippedGlovesSpace()
-	{
-		glovesButton.removeAll();
-		ImageIcon glovesImage = frame.user.inventory.equippedGloves.getImage();
-		
-		glovesButton.add(new JLabel(glovesImage));
-		this.repaint();
-		this.setVisible(true);
-	}
-	void drawEquippedItemsSpace()
-	{
-		itemsButton.removeAll();
-		ImageIcon itemsImage = frame.user.inventory.equippedItems.getImage();
-		
-		itemsButton.add(new JLabel(itemsImage));
-		this.repaint();
-		this.setVisible(true);
-	}
-	void drawEquippedLegsSpace()
-	{
-		legsButton.removeAll();
-		ImageIcon legsImage = frame.user.inventory.equippedLegs.getImage();
-		
-		legsButton.add(new JLabel(legsImage));
-		this.repaint();
-		this.setVisible(true);
-	}
-	void drawEquippedShoesSpace()
-	{
-		shoesButton.removeAll();
-		ImageIcon shoesImage = frame.user.inventory.equippedShoes.getImage();
-		
-		shoesButton.add(new JLabel(shoesImage));
-		this.repaint();
-		this.setVisible(true);
-	} 
 		
 	void drawHeadInventory()
 	{
