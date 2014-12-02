@@ -10,10 +10,10 @@ public class Items extends Gear
 {
 	Items()
 	{
-		name = "Demon Hunter Quiver";
+		name = "EMPTY";
 		try
 		{
-			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/Items/demonhunter_quiver.png")));
+			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/EMPTY.png")));
 		}
 		catch (IOException ex)
 		{
