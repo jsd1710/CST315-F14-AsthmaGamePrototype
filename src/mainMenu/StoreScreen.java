@@ -1,5 +1,6 @@
 package mainMenu;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -10,9 +11,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Map.Entry;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import Store.StoreItem;
 import User.ArmorType;
@@ -29,8 +33,6 @@ public class StoreScreen extends ActiveScreen implements ActionListener
 	JButton shoesButton;
 	JButton itemButton;
 	JButton powerButton;
-	
-	GridBagLayout gbl = new GridBagLayout();
 	
 	StoreScreen(MenuScreen frame)
 	{
@@ -94,7 +96,7 @@ public class StoreScreen extends ActiveScreen implements ActionListener
 		itemsPanel.setLocation(storeSidebar.getX() + storeSidebar.getWidth() + 5, 5);
 		itemsPanel.setSize(this.getWidth()-itemsPanel.getX() - 10, this.currencyBar.getY()-10);
 		itemsPanel.setBackground(Color.blue);
-		itemsPanel.setLayout(gbl);		
+		itemsPanel.setLayout(new GridLayout(0,3));		
 		
 		this.add(storeSidebar);	
 		this.add(itemsPanel);
@@ -166,27 +168,32 @@ public class StoreScreen extends ActiveScreen implements ActionListener
 	void drawAvailbleHeadItems()
 	{
 		itemsPanel.removeAll();
-		
-		GridBagConstraints c = new GridBagConstraints();
-		c.anchor = GridBagConstraints.NORTHWEST;
-		
-		c.weightx = 1;
-		//c.fill = GridBagConstraints.BOTH;
-		
+
 		for (Entry<String, StoreItem> entry : frame.store.headList.entrySet())
 		{
-			JButton button = new JButton(entry.getValue().getName());
+			JButton button = new JButton();
+			button.setLayout(new BorderLayout());
+			JLabel label1 = new JLabel(entry.getValue().getName());
+			JLabel label2 = new JLabel(Integer.toString(entry.getValue().getPrice()));
+			button.add(BorderLayout.NORTH,label1);
+			button.add(BorderLayout.SOUTH,label2);
+			button.setToolTipText(entry.getValue().getName());
 			
-			button.setSize(150, 50);
+			button.setVerticalTextPosition(SwingConstants.CENTER);
+		    button.setHorizontalTextPosition(SwingConstants.RIGHT);
+			
 			button.setIcon(entry.getValue().getImage(50,50));
-			button.setBackground(null);
+			
+			button.setBackground(Color.gray);
+			button.setBorder(BorderFactory.createLineBorder(Color.black));;
+			
 			
 			button.setActionCommand("head" + entry.getValue().getName());
 			button.addActionListener(this);
 			
-			gbl.setConstraints(button, c);
 			itemsPanel.add(button);
 		}
+		
 		validate();
 		itemsPanel.repaint();
 	}

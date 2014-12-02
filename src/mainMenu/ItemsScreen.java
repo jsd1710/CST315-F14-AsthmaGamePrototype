@@ -5,7 +5,9 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.IOException;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -13,12 +15,12 @@ import javax.swing.JPanel;
 public class ItemsScreen extends ActiveScreen 
 {
 	JPanel itemsBackground;
-	JPanel headPanel;
-	JPanel glovesPanel;
-	JPanel bodyPanel;
-	JPanel itemsPanel;
-	JPanel legsPanel;
-	JPanel shoesPanel;
+	JButton headPanel;
+	JButton glovesPanel;
+	JButton bodyPanel;
+	JButton itemsPanel;
+	JButton legsPanel;
+	JButton shoesPanel;
 	
 	ItemsScreen(MenuScreen frame)
 	{
@@ -41,41 +43,47 @@ public class ItemsScreen extends ActiveScreen
 		itemsBackground.setBackground(Color.blue);
 		itemsBackground.setLayout(null);
 		
-		headPanel = new JPanel();
+		headPanel = new JButton();
 		headPanel.setSize(50, 50);
 		headPanel.setLocation(itemsBackground.getWidth()/2-headPanel.getWidth()/2, (int) (itemsBackground.getHeight()*0.10));
 		headPanel.setBackground(Color.white);
 		headPanel.setLayout(new GridLayout(1,1));
+		headPanel.setBorder(BorderFactory.createEmptyBorder());
 		
-		bodyPanel = new JPanel();
+		bodyPanel = new JButton();
 		bodyPanel.setSize(75, 125);
 		bodyPanel.setLocation(itemsBackground.getWidth()/2-bodyPanel.getWidth()/2, (int) (itemsBackground.getHeight()*0.10+headPanel.getHeight()+5));
 		bodyPanel.setBackground(Color.white);
 		bodyPanel.setLayout(new GridLayout(1,1));
+		bodyPanel.setBorder(BorderFactory.createEmptyBorder());
 		
-		glovesPanel = new JPanel();
+		glovesPanel = new JButton();
 		glovesPanel.setSize(75, 50);
 		glovesPanel.setLocation(itemsBackground.getWidth()/2-bodyPanel.getWidth()/2-glovesPanel.getWidth()-5, (int) (itemsBackground.getHeight()*0.10+headPanel.getHeight()+5));
 		glovesPanel.setBackground(Color.white);
 		glovesPanel.setLayout(new GridLayout(1,1));
+		glovesPanel.setBorder(BorderFactory.createEmptyBorder());
 		
-		itemsPanel = new JPanel();
+		itemsPanel = new JButton();
 		itemsPanel.setSize(50, 75);
 		itemsPanel.setLocation(itemsBackground.getWidth()/2+bodyPanel.getWidth()/2+5, (int) (itemsBackground.getHeight()*0.10+headPanel.getHeight()+5));
 		itemsPanel.setBackground(Color.white);
 		itemsPanel.setLayout(new GridLayout(1,1));
+		itemsPanel.setBorder(BorderFactory.createEmptyBorder());
 		
-		legsPanel = new JPanel();
+		legsPanel = new JButton();
 		legsPanel.setSize(75, 100);
 		legsPanel.setLocation(itemsBackground.getWidth()/2-legsPanel.getWidth()/2, (int) (bodyPanel.getY()+bodyPanel.getHeight()+5));
 		legsPanel.setBackground(Color.white);
 		legsPanel.setLayout(new GridLayout(1,1));
+		legsPanel.setBorder(BorderFactory.createEmptyBorder());
 		
-		shoesPanel = new JPanel();
+		shoesPanel = new JButton();
 		shoesPanel.setSize(100, 50);
 		shoesPanel.setLocation(itemsBackground.getWidth()/2-shoesPanel.getWidth()/2, (int) (legsPanel.getY()+legsPanel.getHeight()+5));
 		shoesPanel.setBackground(Color.white);
 		shoesPanel.setLayout(new GridLayout(1,1));
+		shoesPanel.setBorder(BorderFactory.createEmptyBorder());
 		
 		itemsBackground.add(headPanel);
 		itemsBackground.add(bodyPanel);
