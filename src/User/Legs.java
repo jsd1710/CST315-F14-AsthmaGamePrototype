@@ -13,7 +13,7 @@ public class Legs extends Gear
 		name = "Legendary Pants";
 		try
 		{
-			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/Legendary_Pants.jpg")));
+			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/Legs/Legendary_Pants.jpg")));
 		}
 		catch (IOException ex)
 		{

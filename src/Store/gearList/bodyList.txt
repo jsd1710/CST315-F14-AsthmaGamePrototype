@@ -1,1 +1,1 @@
-Dragon Body,100,/Resources/Images/hydraScaleChestPiece.png
+Dragon Body,100,/Resources/Images/Bodies/hydraScaleChestPiece.png

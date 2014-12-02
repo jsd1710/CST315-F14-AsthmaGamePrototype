@@ -13,7 +13,7 @@ public class Gloves extends Gear
 		name = "Demon Hunter Gloves";
 		try
 		{
-			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/demonhunter_gloves.png")));
+			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/Gloves/demonhunter_gloves.png")));
 		}
 		catch (IOException ex)
 		{

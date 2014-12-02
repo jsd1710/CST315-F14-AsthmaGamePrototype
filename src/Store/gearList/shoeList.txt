@@ -1,1 +1,1 @@
-Demon Hunter Boots,100,/Resources/Images/demonhunter_boots.png
+Demon Hunter Boots,100,/Resources/Images/Shoes/demonhunter_boots.png

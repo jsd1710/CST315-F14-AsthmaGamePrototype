@@ -1,1 +1,1 @@
-Demon Hunter Quiver,100,/Resources/Images/demonhunter_quiver.png
+Demon Hunter Quiver,100,/Resources/Images/Items/demonhunter_quiver.png

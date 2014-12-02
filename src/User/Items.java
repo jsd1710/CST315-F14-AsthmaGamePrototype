@@ -13,7 +13,7 @@ public class Items extends Gear
 		name = "Demon Hunter Quiver";
 		try
 		{
-			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/demonhunter_quiver.png")));
+			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/Items/demonhunter_quiver.png")));
 		}
 		catch (IOException ex)
 		{
