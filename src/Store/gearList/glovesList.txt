@@ -1,1 +1,5 @@
 Demon Hunter Gloves,100,/Resources/Images/Gloves/demonhunter_gloves.png
+Heavy Hitters,1000,/Resources/Images/Gloves/heaveyHitter.png
+Iron Fist,300,/Resources/Images/Gloves/ironFist.gif
+Leather Gloves,100,/Resources/Images/Gloves/leatherGloves.png
+FistO'Power,5000,/Resources/Images/Gloves/powerFist.gif

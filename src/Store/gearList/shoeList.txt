@@ -1,1 +1,4 @@
 Demon Hunter Boots,100,/Resources/Images/Shoes/demonhunter_boots.png
+Fly Walkers,200,/Resources/Images/Shoes/flyWalkers.png
+Leather Stompers,200,/Resources/Images/Shoes/leatherStompers.png
+Twilight Boots,500,/Resources/Images/Shoes/twilightBoots.png

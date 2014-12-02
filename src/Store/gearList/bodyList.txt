@@ -1,1 +1,4 @@
-Dragon Body,100,/Resources/Images/Bodies/hydraScaleChestPiece.png
+Dragon Body,500,/Resources/Images/Bodies/hydraScaleChestPiece.png
+Chain Armor,100,/Resources/Images/Bodies/chainChest.png
+Anakar Chest,1000,/Resources/Images/Bodies/anakarChest.png
+Rouge Robes,200,/Resources/Images/Bodies/robeChest.jpeg

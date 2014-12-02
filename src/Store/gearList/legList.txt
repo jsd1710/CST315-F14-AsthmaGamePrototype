@@ -1,1 +1,2 @@
 Legendary Pants,100,/Resources/Images/Legs/Legendary_Pants.jpg
+Diamond Pants,500,/Resources/Images/Legs/diamondPants.png

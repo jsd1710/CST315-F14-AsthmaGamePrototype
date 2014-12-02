@@ -1,1 +1,6 @@
 Demon Hunter Quiver,100,/Resources/Images/Items/demonhunter_quiver.png
+Black Potion,500,/Resources/Images/Items/blackPotion.png
+Cape O' Speed,200,/Resources/Images/Items/capeOSpeed.png
+Fusion Pack,400,/Resources/Images/Items/fusionPack.jpg
+Grappling Ranger,600,/Resources/Images/Items/grapplingRang.png
+Wings of Darkness,100,/Resources/Images/Items/wings.png
