@@ -2,25 +2,27 @@ package mainMenu;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.Image;
-import java.io.IOException;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
-public class ItemsScreen extends ActiveScreen 
+@SuppressWarnings("serial")
+public class ItemsScreen extends ActiveScreen implements ActionListener
 {
 	JPanel itemsBackground;
-	JButton headPanel;
-	JButton glovesPanel;
-	JButton bodyPanel;
-	JButton itemsPanel;
-	JButton legsPanel;
-	JButton shoesPanel;
+	JButton headButton;
+	JButton glovesButton;
+	JButton bodyButton;
+	JButton itemsButton;
+	JButton legsButton;
+	JButton shoesButton;
 	
 	ItemsScreen(MenuScreen frame)
 	{
@@ -43,54 +45,67 @@ public class ItemsScreen extends ActiveScreen
 		itemsBackground.setBackground(Color.blue);
 		itemsBackground.setLayout(null);
 		
-		headPanel = new JButton();
-		headPanel.setSize(50, 50);
-		headPanel.setLocation(itemsBackground.getWidth()/2-headPanel.getWidth()/2, (int) (itemsBackground.getHeight()*0.10));
-		headPanel.setBackground(Color.white);
-		headPanel.setLayout(new GridLayout(1,1));
-		headPanel.setBorder(BorderFactory.createEmptyBorder());
+		headButton = new JButton();
+		headButton.setSize(50, 50);
+		headButton.setLocation(itemsBackground.getWidth()/2-headButton.getWidth()/2, (int) (itemsBackground.getHeight()*0.10));
+		headButton.setBackground(Color.white);
+		headButton.setLayout(new GridLayout(1,1));
+		headButton.setBorder(BorderFactory.createEmptyBorder());
+		headButton.setActionCommand("Equip Head Slot");
 		
-		bodyPanel = new JButton();
-		bodyPanel.setSize(75, 125);
-		bodyPanel.setLocation(itemsBackground.getWidth()/2-bodyPanel.getWidth()/2, (int) (itemsBackground.getHeight()*0.10+headPanel.getHeight()+5));
-		bodyPanel.setBackground(Color.white);
-		bodyPanel.setLayout(new GridLayout(1,1));
-		bodyPanel.setBorder(BorderFactory.createEmptyBorder());
+		bodyButton = new JButton();
+		bodyButton.setSize(75, 125);
+		bodyButton.setLocation(itemsBackground.getWidth()/2-bodyButton.getWidth()/2, (int) (itemsBackground.getHeight()*0.10+headButton.getHeight()+5));
+		bodyButton.setBackground(Color.white);
+		bodyButton.setLayout(new GridLayout(1,1));
+		bodyButton.setBorder(BorderFactory.createEmptyBorder());
+		bodyButton.setActionCommand("Equip Body Slot");
 		
-		glovesPanel = new JButton();
-		glovesPanel.setSize(75, 50);
-		glovesPanel.setLocation(itemsBackground.getWidth()/2-bodyPanel.getWidth()/2-glovesPanel.getWidth()-5, (int) (itemsBackground.getHeight()*0.10+headPanel.getHeight()+5));
-		glovesPanel.setBackground(Color.white);
-		glovesPanel.setLayout(new GridLayout(1,1));
-		glovesPanel.setBorder(BorderFactory.createEmptyBorder());
+		glovesButton = new JButton();
+		glovesButton.setSize(75, 50);
+		glovesButton.setLocation(itemsBackground.getWidth()/2-bodyButton.getWidth()/2-glovesButton.getWidth()-5, (int) (itemsBackground.getHeight()*0.10+headButton.getHeight()+5));
+		glovesButton.setBackground(Color.white);
+		glovesButton.setLayout(new GridLayout(1,1));
+		glovesButton.setBorder(BorderFactory.createEmptyBorder());
+		glovesButton.setActionCommand("Equip Gloves Slot");
 		
-		itemsPanel = new JButton();
-		itemsPanel.setSize(50, 75);
-		itemsPanel.setLocation(itemsBackground.getWidth()/2+bodyPanel.getWidth()/2+5, (int) (itemsBackground.getHeight()*0.10+headPanel.getHeight()+5));
-		itemsPanel.setBackground(Color.white);
-		itemsPanel.setLayout(new GridLayout(1,1));
-		itemsPanel.setBorder(BorderFactory.createEmptyBorder());
+		itemsButton = new JButton();
+		itemsButton.setSize(50, 75);
+		itemsButton.setLocation(itemsBackground.getWidth()/2+bodyButton.getWidth()/2+5, (int) (itemsBackground.getHeight()*0.10+headButton.getHeight()+5));
+		itemsButton.setBackground(Color.white);
+		itemsButton.setLayout(new GridLayout(1,1));
+		itemsButton.setBorder(BorderFactory.createEmptyBorder());
+		itemsButton.setActionCommand("Equip Items Slot");
 		
-		legsPanel = new JButton();
-		legsPanel.setSize(75, 100);
-		legsPanel.setLocation(itemsBackground.getWidth()/2-legsPanel.getWidth()/2, (int) (bodyPanel.getY()+bodyPanel.getHeight()+5));
-		legsPanel.setBackground(Color.white);
-		legsPanel.setLayout(new GridLayout(1,1));
-		legsPanel.setBorder(BorderFactory.createEmptyBorder());
+		legsButton = new JButton();
+		legsButton.setSize(75, 100);
+		legsButton.setLocation(itemsBackground.getWidth()/2-legsButton.getWidth()/2, (int) (bodyButton.getY()+bodyButton.getHeight()+5));
+		legsButton.setBackground(Color.white);
+		legsButton.setLayout(new GridLayout(1,1));
+		legsButton.setBorder(BorderFactory.createEmptyBorder());
+		legsButton.setActionCommand("Equip Legs Slot");
 		
-		shoesPanel = new JButton();
-		shoesPanel.setSize(100, 50);
-		shoesPanel.setLocation(itemsBackground.getWidth()/2-shoesPanel.getWidth()/2, (int) (legsPanel.getY()+legsPanel.getHeight()+5));
-		shoesPanel.setBackground(Color.white);
-		shoesPanel.setLayout(new GridLayout(1,1));
-		shoesPanel.setBorder(BorderFactory.createEmptyBorder());
+		shoesButton = new JButton();
+		shoesButton.setSize(100, 50);
+		shoesButton.setLocation(itemsBackground.getWidth()/2-shoesButton.getWidth()/2, (int) (legsButton.getY()+legsButton.getHeight()+5));
+		shoesButton.setBackground(Color.white);
+		shoesButton.setLayout(new GridLayout(1,1));
+		shoesButton.setBorder(BorderFactory.createEmptyBorder());
+		shoesButton.setActionCommand("Equip Shoes Slot");
 		
-		itemsBackground.add(headPanel);
-		itemsBackground.add(bodyPanel);
-		itemsBackground.add(glovesPanel);
-		itemsBackground.add(itemsPanel);
-		itemsBackground.add(legsPanel);
-		itemsBackground.add(shoesPanel);
+		headButton.addActionListener(this);
+		bodyButton.addActionListener(this);
+		glovesButton.addActionListener(this);
+		itemsButton.addActionListener(this);
+		legsButton.addActionListener(this);
+		shoesButton.addActionListener(this);
+		
+		itemsBackground.add(headButton);
+		itemsBackground.add(bodyButton);
+		itemsBackground.add(glovesButton);
+		itemsBackground.add(itemsButton);
+		itemsBackground.add(legsButton);
+		itemsBackground.add(shoesButton);
 		
 		this.add(itemsBackground);
 		drawEquippedHeadSpace();
@@ -103,57 +118,95 @@ public class ItemsScreen extends ActiveScreen
 	
 	void drawEquippedHeadSpace()
 	{
-		headPanel.removeAll();
+		headButton.removeAll();
 		ImageIcon headImage = frame.user.inventory.equippedHelmet.getImage();
 		
-		headPanel.add(new JLabel(headImage));
+		headButton.add(new JLabel(headImage));
 		this.repaint();
 		this.setVisible(true);
 	}
 	
 	void drawEquippedBodySpace()
 	{
-		bodyPanel.removeAll();
+		bodyButton.removeAll();
 		ImageIcon bodyImage = frame.user.inventory.equippedBody.getImage();
 		
-		bodyPanel.add(new JLabel(bodyImage));
+		bodyButton.add(new JLabel(bodyImage));
 		this.repaint();
 		this.setVisible(true);
 	}
 	void drawEquippedGlovesSpace()
 	{
-		glovesPanel.removeAll();
+		glovesButton.removeAll();
 		ImageIcon glovesImage = frame.user.inventory.equippedGloves.getImage();
 		
-		glovesPanel.add(new JLabel(glovesImage));
+		glovesButton.add(new JLabel(glovesImage));
 		this.repaint();
 		this.setVisible(true);
 	}
 	void drawEquippedItemsSpace()
 	{
-		itemsPanel.removeAll();
+		itemsButton.removeAll();
 		ImageIcon itemsImage = frame.user.inventory.equippedItems.getImage();
 		
-		itemsPanel.add(new JLabel(itemsImage));
+		itemsButton.add(new JLabel(itemsImage));
 		this.repaint();
 		this.setVisible(true);
 	}
 	void drawEquippedLegsSpace()
 	{
-		legsPanel.removeAll();
+		legsButton.removeAll();
 		ImageIcon legsImage = frame.user.inventory.equippedLegs.getImage();
 		
-		legsPanel.add(new JLabel(legsImage));
+		legsButton.add(new JLabel(legsImage));
 		this.repaint();
 		this.setVisible(true);
 	}
 	void drawEquippedShoesSpace()
 	{
-		shoesPanel.removeAll();
+		shoesButton.removeAll();
 		ImageIcon shoesImage = frame.user.inventory.equippedShoes.getImage();
 		
-		shoesPanel.add(new JLabel(shoesImage));
+		shoesButton.add(new JLabel(shoesImage));
 		this.repaint();
 		this.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) 
+	{
+		String action = e.getActionCommand();
+		if (action.equals("Equip Head Slot"))
+		{
+			JTextArea textArea = new JTextArea(6, 25);
+			textArea.setText("STUFFFFFFFF");
+			textArea.setEditable(false);
+
+			// wrap a scrollpane around it
+			JScrollPane scrollPane = new JScrollPane(textArea);
+
+			// display them in a message dialog
+			JOptionPane.showMessageDialog(frame, scrollPane);
+		}
+		else if (action.equals("Equip Body Slot"))
+		{
+			System.out.println("STUFF");
+		}
+		else if (action.equals("Equip Gloves Slot"))
+		{
+			System.out.println("STUFF");
+		}
+		else if (action.equals("Equip Items Slot"))
+		{
+			System.out.println("STUFF");
+		}
+		else if (action.equals("Equip Legs Slot"))
+		{
+			System.out.println("STUFF");
+		}
+		else if (action.equals("Equip Shoes Slot"))
+		{
+			System.out.println("STUFF");
+		}
 	}
 }

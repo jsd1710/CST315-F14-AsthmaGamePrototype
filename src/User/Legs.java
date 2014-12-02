@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 
 public class Legs extends Gear
 {
-	Legs()
+	public Legs()
 	{
 		name = "EMPTY";
 		try
@@ -21,7 +21,7 @@ public class Legs extends Gear
 		}
 	}
 	
-	Legs(String name, ImageIcon image)
+	public Legs(String name, ImageIcon image)
 	{
 		this.name = name;
 		this.image = image;
