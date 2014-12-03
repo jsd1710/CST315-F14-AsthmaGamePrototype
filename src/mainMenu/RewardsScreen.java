@@ -1,7 +1,6 @@
 package mainMenu;
 
 import java.awt.Color;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -15,6 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
+import User.ArmorType;
 
 @SuppressWarnings("serial")
 public class RewardsScreen extends ActiveScreen
@@ -44,10 +45,10 @@ public class RewardsScreen extends ActiveScreen
 		
 		this.createCurrencyBar();
 		
-		claimMoneyButton = new JButton("Claim Reward");
+		claimMoneyButton = new JButton("Claim Money");
 		claimMoneyButton.setBounds(360, 200, 125, 30);
 		
-		claimItemButton = new JButton("Claim Reward");
+		claimItemButton = new JButton("Claim Item");
 		claimItemButton.setBounds(360, 400, 125, 30);
 		
 		//Panel that hold Quest Type
@@ -78,5 +79,19 @@ public class RewardsScreen extends ActiveScreen
 		this.add(itemQuestGoal);
 		this.add(claimMoneyButton);
 		this.add(claimItemButton);
+	}
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		String action = e.getActionCommand();
+		
+		if (action.equals("Claim Money"))
+		{
+
+		}			
+		else if (action.equals("Claim Item"))
+		{
+
+		}	
 	}
 }
