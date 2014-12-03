@@ -22,8 +22,8 @@ public class RewardsScreen extends ActiveScreen
 	
 	JPanel moneyQuestGoal;
 	JPanel itemQuestGoal;
-	JPanel moneyQuestType;
-	JPanel itemQuestType;
+	JPanel moneyQuestReward;
+	JPanel itemQuestReward;
 	JPanel itemRewardArea;
 	JButton claimMoneyButton;
 	JButton claimItemButton;
@@ -51,15 +51,15 @@ public class RewardsScreen extends ActiveScreen
 		claimItemButton.setBounds(360, 400, 125, 30);
 		
 		//Panel that hold Quest Type
-		moneyQuestType = new JPanel();
-		moneyQuestType.setLocation(50,100);
-		moneyQuestType.setSize(100,100);
-		moneyQuestType.setBackground(Color.blue);
+		moneyQuestReward = new JPanel();
+		moneyQuestReward.setLocation(50,100);
+		moneyQuestReward.setSize(100,100);
+		moneyQuestReward.setBackground(Color.blue);
 		//Panel that hold Quest Type
-		itemQuestType = new JPanel();
-		itemQuestType.setLocation(50,300);
-		itemQuestType.setSize(100,100);
-		itemQuestType.setBackground(Color.blue);
+		itemQuestReward = new JPanel();
+		itemQuestReward.setLocation(50,300);
+		itemQuestReward.setSize(100,100);
+		itemQuestReward.setBackground(Color.blue);
 		
 		//Panel that updates quest mission
 		moneyQuestGoal = new JPanel();
@@ -71,11 +71,9 @@ public class RewardsScreen extends ActiveScreen
 		itemQuestGoal.setLocation(180,300);
 		itemQuestGoal.setSize(300,100);
 		itemQuestGoal.setBackground(Color.blue);
-		
-		
-		
-		this.add(moneyQuestType);
-		this.add(itemQuestType);
+			
+		this.add(moneyQuestReward);
+		this.add(itemQuestReward);
 		this.add(moneyQuestGoal);
 		this.add(itemQuestGoal);
 		this.add(claimMoneyButton);
