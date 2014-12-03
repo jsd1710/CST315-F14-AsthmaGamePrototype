@@ -4,3 +4,4 @@ Cape O' Speed,200,/Resources/Images/Items/capeOSpeed.png
 Fusion Pack,400,/Resources/Images/Items/fusionPack.jpg
 Grappling Ranger,600,/Resources/Images/Items/grapplingRang.png
 Wings of Darkness,100,/Resources/Images/Items/wings.png
+Spirometer of Superness,10000,/Resources/Images/Items/spirometer.jpg
