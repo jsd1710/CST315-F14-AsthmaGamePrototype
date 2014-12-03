@@ -184,7 +184,7 @@ public class StoreScreen extends ActiveScreen implements ActionListener
 		{ //If player already owns the item.
 			System.out.println("YOU ALREADY OWN: " + name);
 		}
-		else if (this.frame.user.money >= this.frame.store.get(name, armorType).getPrice())
+		else if (this.frame.user.getMoney() >= this.frame.store.get(name, armorType).getPrice())
 		{ //If player can afford the item.
 			//Adds a new item to user's inventory.
 			System.out.println("You have purchased: " + name);
@@ -215,7 +215,7 @@ public class StoreScreen extends ActiveScreen implements ActionListener
 			this.frame.user.inventory.add(item, armorType);
 			
 			//Removes the cost of item from user's currency.
-			this.frame.user.money -= this.frame.store.get(name,armorType).getPrice();
+			this.frame.user.setMoney(this.frame.user.getMoney() - this.frame.store.get(name,armorType).getPrice());
 			
 			
 			this.refreshCurrencyBar();

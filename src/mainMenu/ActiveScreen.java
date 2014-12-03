@@ -20,7 +20,7 @@ public abstract class ActiveScreen extends JPanel
 		currencyBar.setBackground(Color.blue);
 		currencyBar.setLayout(new GridLayout(2,1));
 		
-		JLabel currencyLabel = new JLabel("Money: " + Integer.toString(frame.user.money));
+		JLabel currencyLabel = new JLabel("Money: " + Integer.toString(frame.user.getMoney()));
 		currencyLabel.setForeground(Color.white);
 		currencyBar.add(currencyLabel);
 		
@@ -32,6 +32,6 @@ public abstract class ActiveScreen extends JPanel
 	{
 		JLabel currencyLabel = (JLabel) currencyBar.getComponent(0);
 		
-		currencyLabel.setText("Money: " + Integer.toString(frame.user.money));
+		currencyLabel.setText("Money: " + Integer.toString(frame.user.getMoney()));
 	}
 }

@@ -17,7 +17,7 @@
   </enumeration>  
   <class id="3" language="java" name="User.Body" project="AsthmaGameMeue" 
     file="/AsthmaGameMeue/cst315-asthma-game-prototype/src/User/Body.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="366" y="128"/>    
+    <position height="-1" width="-1" x="366" y="113"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -44,7 +44,7 @@
   </class>  
   <class id="6" language="java" name="User.Head" project="AsthmaGameMeue" 
     file="/AsthmaGameMeue/cst315-asthma-game-prototype/src/User/Head.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="361" y="528"/>    
+    <position height="-1" width="-1" x="357" y="534"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -53,7 +53,7 @@
   </class>  
   <class id="7" language="java" name="User.Inventory" project="AsthmaGameMeue" 
     file="/AsthmaGameMeue/cst315-asthma-game-prototype/src/User/Inventory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="753" y="482"/>    
+    <position height="-1" width="-1" x="798" y="365"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -71,7 +71,7 @@
   </class>  
   <class id="9" language="java" name="User.Legs" project="AsthmaGameMeue" 
     file="/AsthmaGameMeue/cst315-asthma-game-prototype/src/User/Legs.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="359" y="661"/>    
+    <position height="-1" width="-1" x="343" y="678"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -80,7 +80,7 @@
   </class>  
   <class id="10" language="java" name="User.Shoes" project="AsthmaGameMeue" 
     file="/AsthmaGameMeue/cst315-asthma-game-prototype/src/User/Shoes.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="360" y="809"/>    
+    <position height="-1" width="-1" x="360" y="824"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -89,7 +89,7 @@
   </class>  
   <class id="11" language="java" name="User.User" project="AsthmaGameMeue" 
     file="/AsthmaGameMeue/cst315-asthma-game-prototype/src/User/User.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="857" y="732"/>    
+    <position height="-1" width="-1" x="878" y="780"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -97,149 +97,104 @@
     </display>  
   </class>  
   <generalization id="12">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <generalization id="13">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="4"/>  
   </generalization>  
-  <association id="14">    
-    <bendpoint x="617" y="818"/>    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="15" name="ownedShoePieces"/>      
-      <multiplicity id="16" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="17">    
-    <bendpoint x="179" y="681"/>    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <association id="18">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="19" name="ownedHeadPieces">        
-        <position height="18" width="115" x="447" y="482"/>      
-      </attribute>      
-      <multiplicity id="20" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="21">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <association id="22">    
-    <bendpoint x="568" y="391"/>    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="23" name="ownedItemPieces"/>      
-      <multiplicity id="24" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="25">    
-    <bendpoint x="754" y="129"/>    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="26" name="ownedBodyPieces"/>      
-      <multiplicity id="27" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="28">    
+  <association id="13">    
     <bendpoint x="531" y="463"/>    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="29" name="equippedItems"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
+      <attribute id="14" name="equippedItems">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="15" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="31">    
-    <bendpoint x="636" y="242"/>    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="32" name="equippedBody"/>      
-      <multiplicity id="33" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="34">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <association id="35">    
-    <bendpoint x="576" y="669"/>    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="36" name="ownedLegPieces"/>      
-      <multiplicity id="37" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="38">    
+  <generalization id="16">    
     <bendpoint x="129" y="809"/>    
     <end type="SOURCE" refId="10"/>    
     <end type="TARGET" refId="4"/>  
   </generalization>  
-  <association id="39">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="40" name="inventory"/>      
-      <multiplicity id="41" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="42">    
-    <bendpoint x="589" y="270"/>    
+  <association id="17">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="43" name="equippedGloves"/>      
-      <multiplicity id="44" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="45">    
-    <bendpoint x="566" y="348"/>    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="46" name="ownedGlovePieces"/>      
-      <multiplicity id="47" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="48">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="49" name="equippedLegs">        
-        <position height="18" width="90" x="496" y="606"/>      
+      <attribute id="18" name="equippedLegs">        
+        <position height="18" width="90" x="480" y="623"/>      
       </attribute>      
-      <multiplicity id="50" minimum="0" maximum="1"/>    
+      <multiplicity id="19" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-16" y="17"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="51">    
-    <bendpoint x="593" y="725"/>    
+  <generalization id="20">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="21">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="52" name="equippedShoes">        
-        <position height="18" width="98" x="444" y="732"/>      
+      <attribute id="22" name="equippedBody">        
+        <position height="0" width="0" x="0" y="-15"/>      
       </attribute>      
-      <multiplicity id="53" minimum="0" maximum="1"/>    
+      <multiplicity id="23" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="-15"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="54">    
-    <bendpoint x="526" y="570"/>    
+  <association id="24">    
+    <bendpoint x="589" y="270"/>    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="55" name="equippedHelmet"/>      
-      <multiplicity id="56" minimum="0" maximum="1"/>    
+      <attribute id="25" name="equippedGloves">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="26" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="27">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <generalization id="28">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="29">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="30" name="inventory">        
+        <position height="0" width="0" x="45" y="-117"/>      
+      </attribute>      
+      <multiplicity id="31" minimum="0" maximum="1">        
+        <position height="0" width="0" x="45" y="-117"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="32">    
+    <bendpoint x="179" y="681"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="33">    
+    <bendpoint x="593" y="725"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="34" name="equippedShoes">        
+        <position height="18" width="98" x="444" y="747"/>      
+      </attribute>      
+      <multiplicity id="35" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="15"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

@@ -3,7 +3,7 @@ package User;
 public class User 
 {
 	String name;
-	public int money;
+	int money;
 	public Inventory inventory;
 	
 	public User()

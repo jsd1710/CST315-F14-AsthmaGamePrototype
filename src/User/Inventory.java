@@ -18,7 +18,7 @@ public class Inventory
 	Shoes equippedShoes;
 	
 	
-	Inventory()
+	public Inventory()
 	{
 		ownedHeadPieces = new Hashtable<String,Gear>();
 		ownedBodyPieces = new Hashtable<String,Gear>();
@@ -194,7 +194,7 @@ public class Inventory
 		}
 	}
 	
-	void remove(String name, ArmorType armorType)
+	public void remove(String name, ArmorType armorType)
 	{
 		switch (armorType)
 		{
@@ -222,7 +222,7 @@ public class Inventory
 		
 	}
 	
-	Gear get(String name, ArmorType armorType)
+	public Gear get(String name, ArmorType armorType)
 	{
 		switch (armorType)
 		{
