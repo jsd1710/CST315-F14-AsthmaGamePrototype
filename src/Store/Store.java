@@ -34,6 +34,31 @@ public class Store
 		readStoreItems(ArmorType.Shoes);
 	}
 	
+	public void add(String name, StoreItem item, ArmorType armorType)
+	{
+		switch (armorType)
+		{
+		case Head:
+			headList.put(name,item);
+			break;
+		case Body:
+			bodyList.put(name,item);
+			break;
+		case Legs:
+			legList.put(name,item);
+			break;
+		case Gloves:
+			glovesList.put(name,item);
+			break;
+		case Items:
+			itemList.put(name,item);
+			break;
+		case Shoes:
+			shoeList.put(name,item);
+			break;
+		}
+	}
+	
 	public StoreItem get(String name, ArmorType armorType)
 	{
 		switch (armorType)
@@ -82,32 +107,7 @@ public class Store
 	{
 		try 
 		{
-			BufferedReader fin;
-			
-			switch (armorType)
-			{
-			case Head:
-				fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Resources/Store/headList.txt")));
-				break;
-			case Body:
-				fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Resources/Store/bodyList.txt")));
-				break;
-			case Legs:
-				fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Resources/Store/legList.txt")));
-				break;
-			case Gloves:
-				fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Resources/Store/glovesList.txt")));
-				break;
-			case Items:
-				fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Resources/Store/itemList.txt")));
-				break;
-			case Shoes:
-				fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Resources/Store/shoeList.txt")));
-				break;
-				
-			default:
-				fin = new BufferedReader(null);
-			}
+			BufferedReader fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Resources/Store/" + armorType + "List.txt")));
 			
 			String fileLine;
 			String[] attribute;
@@ -120,27 +120,7 @@ public class Store
 				//attribute 0 = name, 1 = item price, 2 = item path when parsed
 				item = new StoreItem((attribute[0]),Integer.parseInt(attribute[1]),(attribute[2]));//name
 				
-				switch (armorType)
-				{
-				case Head:
-					headList.put(attribute[0],item);
-					break;
-				case Body:
-					bodyList.put(attribute[0],item);
-					break;
-				case Legs:
-					legList.put(attribute[0],item);
-					break;
-				case Gloves:
-					glovesList.put(attribute[0],item);
-					break;
-				case Items:
-					itemList.put(attribute[0],item);
-					break;
-				case Shoes:
-					shoeList.put(attribute[0],item);
-					break;
-				}
+				add(attribute[0], item, armorType);
 				
 				System.out.println("Added " + attribute[0] + " to the store!");
 			}
