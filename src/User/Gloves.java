@@ -10,7 +10,7 @@ public class Gloves extends Gear
 {
 	public Gloves()
 	{
-		name = "EMPTY";
+		name = "EMPTY GLOVES";
 		try
 		{
 			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/EMPTY.png")));

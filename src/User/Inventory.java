@@ -34,12 +34,12 @@ public class Inventory
 		add(new Legs(), ArmorType.Legs);
 		add(new Shoes(), ArmorType.Shoes);
 		
-		equip("EMPTY", ArmorType.Head);
-		equip("EMPTY", ArmorType.Body);
-		equip("EMPTY", ArmorType.Gloves);
-		equip("EMPTY", ArmorType.Items);
-		equip("EMPTY", ArmorType.Legs);
-		equip("EMPTY", ArmorType.Shoes);
+		equip("EMPTY HEAD", ArmorType.Head);
+		equip("EMPTY BODY", ArmorType.Body);
+		equip("EMPTY GLOVES", ArmorType.Gloves);
+		equip("EMPTY ITEMS", ArmorType.Items);
+		equip("EMPTY LEGS", ArmorType.Legs);
+		equip("EMPTY SHOES", ArmorType.Shoes);
 	}
 	
 	public Hashtable<String,Gear> getOwned(ArmorType armorType)

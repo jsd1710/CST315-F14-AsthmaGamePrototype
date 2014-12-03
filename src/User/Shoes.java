@@ -10,7 +10,7 @@ public class Shoes extends Gear
 {
 	public Shoes()
 	{
-		name = "EMPTY";
+		name = "EMPTY SHOES";
 		try
 		{
 			image = new ImageIcon(ImageIO.read(Image.class.getResource("/Resources/Images/EMPTY.png")));

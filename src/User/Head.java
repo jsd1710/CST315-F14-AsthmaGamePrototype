@@ -7,7 +7,7 @@ public class Head extends Gear
 {
 	public Head()
 	{
-		name = "EMPTY";
+		name = "EMPTY HEAD";
 		image = new ImageIcon(Image.class.getResource("/Resources/Images/EMPTY.png"));
 	}
 	
