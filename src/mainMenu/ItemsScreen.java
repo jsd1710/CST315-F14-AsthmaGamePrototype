@@ -209,7 +209,7 @@ public class ItemsScreen extends ActiveScreen implements ActionListener
 		}
 		
 		validate();
-		itemsButton.repaint();
+		this.repaint();
 	}
 
 	public void actionPerformed(ActionEvent e) 
