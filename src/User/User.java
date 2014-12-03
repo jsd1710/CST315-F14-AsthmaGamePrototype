@@ -12,27 +12,6 @@ public class User
 		money = 5000;
 		
 		inventory = new Inventory();
-		
-		Head helm = new Head();
-		Body body = new Body();
-		Gloves gloves = new Gloves();
-		Items items = new Items();
-		Legs legs = new Legs();
-		Shoes shoes = new Shoes();
-		
-		inventory.add(helm, ArmorType.Head);
-		inventory.add(body, ArmorType.Body);
-		inventory.add(gloves, ArmorType.Gloves);
-		inventory.add(items, ArmorType.Items);
-		inventory.add(legs, ArmorType.Legs);
-		inventory.add(shoes, ArmorType.Shoes);
-		
-		inventory.equip("EMPTY", ArmorType.Head);
-		inventory.equip("EMPTY", ArmorType.Body);
-		inventory.equip("EMPTY", ArmorType.Gloves);
-		inventory.equip("EMPTY", ArmorType.Items);
-		inventory.equip("EMPTY", ArmorType.Legs);
-		inventory.equip("EMPTY", ArmorType.Shoes);
 	}
 	
 	public User(String name, int money)

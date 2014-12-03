@@ -26,6 +26,20 @@ public class Inventory
 		ownedItemPieces = new Hashtable<String,Gear>();
 		ownedLegPieces = new Hashtable<String,Gear>();
 		ownedShoePieces = new Hashtable<String,Gear>();
+		
+		add(new Head(), ArmorType.Head);
+		add(new Body(), ArmorType.Body);
+		add(new Gloves(), ArmorType.Gloves);
+		add(new Items(), ArmorType.Items);
+		add(new Legs(), ArmorType.Legs);
+		add(new Shoes(), ArmorType.Shoes);
+		
+		equip("EMPTY", ArmorType.Head);
+		equip("EMPTY", ArmorType.Body);
+		equip("EMPTY", ArmorType.Gloves);
+		equip("EMPTY", ArmorType.Items);
+		equip("EMPTY", ArmorType.Legs);
+		equip("EMPTY", ArmorType.Shoes);
 	}
 	
 	public Hashtable<String,Gear> getOwned(ArmorType armorType)
