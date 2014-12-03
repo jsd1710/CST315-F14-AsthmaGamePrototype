@@ -4,38 +4,79 @@ import java.util.Hashtable;
 
 public class Inventory 
 {
-	public Hashtable<String,Head> ownedHeadPieces;
-	public Head equippedHelmet;
-	public Hashtable<String,Body> ownedBodyPieces;
-	public Body equippedBody;
-	public Hashtable<String,Gloves> ownedGlovePieces;
-	public Gloves equippedGloves;
-	public Hashtable<String,Items> ownedItemPieces;
-	public Items equippedItems;
-	public Hashtable<String,Legs> ownedLegPieces;
-	public Legs equippedLegs;
-	public Hashtable<String,Shoes> ownedShoePieces;
-	public Shoes equippedShoes;
+	Hashtable<String, Gear> ownedHeadPieces;
+	Head equippedHead;
+	Hashtable<String, Gear> ownedBodyPieces;
+	Body equippedBody;
+	Hashtable<String, Gear> ownedGlovePieces;
+	Gloves equippedGloves;
+	Hashtable<String, Gear> ownedItemPieces;
+	Items equippedItems;
+	Hashtable<String, Gear> ownedLegPieces;
+	Legs equippedLegs;
+	Hashtable<String, Gear> ownedShoePieces;
+	Shoes equippedShoes;
 	
 	
 	Inventory()
 	{
-		ownedHeadPieces = new Hashtable<String,Head>();
-		ownedBodyPieces = new Hashtable<String,Body>();
-		ownedGlovePieces = new Hashtable<String,Gloves>();
-		ownedItemPieces = new Hashtable<String,Items>();
-		ownedLegPieces = new Hashtable<String,Legs>();
-		ownedShoePieces = new Hashtable<String,Shoes>();
+		ownedHeadPieces = new Hashtable<String,Gear>();
+		ownedBodyPieces = new Hashtable<String,Gear>();
+		ownedGlovePieces = new Hashtable<String,Gear>();
+		ownedItemPieces = new Hashtable<String,Gear>();
+		ownedLegPieces = new Hashtable<String,Gear>();
+		ownedShoePieces = new Hashtable<String,Gear>();
 	}
 	
-	boolean equip(String name, ArmorType armorType)
+	public Hashtable<String,Gear> getOwned(ArmorType armorType)
+	{
+		switch (armorType)
+		{
+		case Head:
+			return ownedHeadPieces;
+		case Body:
+			return ownedBodyPieces;
+		case Legs:
+			return ownedLegPieces;
+		case Gloves:
+			return ownedGlovePieces;
+		case Items: 
+			return ownedItemPieces;
+		case Shoes: 
+			return ownedShoePieces;
+		default:
+			return null;
+		}
+	}
+	
+	public Gear getEquipped(ArmorType armorType)
+	{
+		switch (armorType)
+		{
+		case Head:
+			return equippedHead;
+		case Body:
+			return equippedBody;
+		case Legs:
+			return equippedLegs;
+		case Gloves:
+			return equippedGloves;
+		case Items: 
+			return equippedItems;
+		case Shoes: 
+			return equippedShoes;
+		default:
+			return null;
+		}
+	}	
+	public boolean equip(String name, ArmorType armorType)
 	{
 		switch (armorType)
 		{
 		case Head:
 			if (ownedHeadPieces.containsKey(name))
 			{
-				equippedHelmet = ownedHeadPieces.get(name);
+				equippedHead = (Head) ownedHeadPieces.get(name);
 				return true;
 			}
 			else
@@ -46,7 +87,7 @@ public class Inventory
 		case Body:
 			if (ownedBodyPieces.containsKey(name))
 			{
-				equippedBody = ownedBodyPieces.get(name);
+				equippedBody = (Body) ownedBodyPieces.get(name);
 				return true;
 			}
 			else
@@ -57,7 +98,7 @@ public class Inventory
 		case Gloves:
 			if (ownedGlovePieces.containsKey(name))
 			{
-				equippedGloves = ownedGlovePieces.get(name);
+				equippedGloves = (Gloves) ownedGlovePieces.get(name);
 				return true;
 			}
 			else
@@ -68,7 +109,7 @@ public class Inventory
 		case Items:
 			if (ownedItemPieces.containsKey(name))
 			{
-				equippedItems = ownedItemPieces.get(name);
+				equippedItems = (Items) ownedItemPieces.get(name);
 				return true;
 			}
 			else
@@ -79,7 +120,7 @@ public class Inventory
 		case Legs:
 			if (ownedLegPieces.containsKey(name))
 			{
-				equippedLegs = ownedLegPieces.get(name);
+				equippedLegs = (Legs) ownedLegPieces.get(name);
 				return true;
 			}
 			else
@@ -90,7 +131,7 @@ public class Inventory
 		case Shoes:
 			if (ownedShoePieces.containsKey(name))
 			{
-				equippedShoes = ownedShoePieces.get(name);
+				equippedShoes = (Shoes) ownedShoePieces.get(name);
 				return true;
 			}
 			else
@@ -105,7 +146,7 @@ public class Inventory
 		}
 		
 	}
-	//servers as buy method
+
 	public void add(Gear gear, ArmorType armorType)
 	{
 		switch (armorType)

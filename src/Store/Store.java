@@ -5,15 +5,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Hashtable;
 
+import User.ArmorType;
+
 public class Store 
 {
 	//StoreItem, general class that meets any Item type with prices of item and path to image's directory
-	public Hashtable<String,StoreItem> headList;
-	public Hashtable<String,StoreItem> bodyList;
-	public Hashtable<String,StoreItem> glovesList;
-	public Hashtable<String,StoreItem> legList;
-	public Hashtable<String,StoreItem> itemList;
-	public Hashtable<String,StoreItem> shoeList;
+	Hashtable<String,StoreItem> headList;
+	Hashtable<String,StoreItem> bodyList;
+	Hashtable<String,StoreItem> glovesList;
+	Hashtable<String,StoreItem> legList;
+	Hashtable<String,StoreItem> itemList;
+	Hashtable<String,StoreItem> shoeList;
 	
 	public Store() throws IOException
 	{
@@ -24,174 +26,130 @@ public class Store
 		itemList = new Hashtable<String,StoreItem>();
 		shoeList = new Hashtable<String,StoreItem>();
 		
-		readHeadList();
-		readBodyList();
-		readLegList();
-		readGlovesList();
-		readItemList();
-		readShoeList();
+		readStoreItems(ArmorType.Head);
+		readStoreItems(ArmorType.Body);
+		readStoreItems(ArmorType.Legs);
+		readStoreItems(ArmorType.Gloves);
+		readStoreItems(ArmorType.Items);
+		readStoreItems(ArmorType.Shoes);
 	}
 	
-	public void readHeadList() throws IOException 
+	public StoreItem get(String name, ArmorType armorType)
 	{
-		
-		try
+		switch (armorType)
 		{
-			BufferedReader fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Store/gearList/headList.txt")));
+		case Head:
+			return headList.get(name);
+		case Body:
+			return bodyList.get(name);
+		case Gloves:
+			return glovesList.get(name);
+		case Legs:
+			return legList.get(name);
+		case Items:
+			return itemList.get(name);
+		case Shoes:
+			return shoeList.get(name);
 			
-			String fileLine;
-			String[] attribute;
-			StoreItem item;
-			
-			//readlines until end of txt
-			while((fileLine = fin.readLine()) != null)
-			{
-				attribute = fileLine.split(",");
-				//attribute 0 = name, 1 = item price, 2 = item path when parsed
-				item = new StoreItem((attribute[0]),Integer.parseInt(attribute[1]),(attribute[2]));//name
-				headList.put(attribute[0],item);
-				System.out.println("Added " + attribute[0] + " to the store!");
-			}
-			fin.close();
+		default:
+			return null;
 		}
-		catch(Exception e)
-		{
-			 throw e;
-		}				
-	}	
-	
-	public void readBodyList() throws IOException 
-	{
-		
-		try
-		{
-			BufferedReader fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Store/gearList/bodyList.txt")));
-			
-			String fileLine;
-			String[] attribute;
-			StoreItem item;
-			//readlines until end of txt
-			while((fileLine = fin.readLine()) != null)
-			{
-				attribute = fileLine.split(",");
-				//attribute 0 = name, 1 = item price, 2 = item path when parsed
-				item = new StoreItem((attribute[0]),Integer.parseInt(attribute[1]),(attribute[2]));//name
-				bodyList.put(attribute[0],item);
-				System.out.println("Added " + attribute[0] + " to the store!");
-			}
-			fin.close();
-		}
-		catch(Exception e)
-		{
-			 throw e;
-		}				
-	}	
-	
-	public void readLegList() throws IOException 
-	{
-		
-		try
-		{
-			BufferedReader fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Store/gearList/legList.txt")));
-			
-			String fileLine;
-			String[] attribute;
-			StoreItem item;
-			//readlines until end of txt
-			while((fileLine = fin.readLine()) != null)
-			{
-				attribute = fileLine.split(",");
-				//attribute 0 = name, 1 = item price, 2 = item path when parsed
-				item = new StoreItem((attribute[0]),Integer.parseInt(attribute[1]),(attribute[2]));//name
-				legList.put(attribute[0],item);
-				System.out.println("Added " + attribute[0] + " to the store!");
-			}
-			fin.close();
-		}
-		catch(Exception e)
-		{
-			 throw e;
-		}				
-	}	
-	
-	public void readGlovesList() throws IOException 
-	{
-		
-		try
-		{
-			BufferedReader fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Store/gearList/glovesList.txt")));
-			
-			String fileLine;
-			String[] attribute;
-			StoreItem item;
-			//readlines until end of txt
-			while((fileLine = fin.readLine()) != null)
-			{
-				attribute = fileLine.split(",");
-				//attribute 0 = name, 1 = item price, 2 = item path when parsed
-				item = new StoreItem((attribute[0]),Integer.parseInt(attribute[1]),(attribute[2]));//name
-				glovesList.put(attribute[0],item);
-				System.out.println("Added " + attribute[0] + " to the store!");
-			}
-			fin.close();
-		}
-		catch(Exception e)
-		{
-			 throw e;
-		}				
 	}
 	
-	public void readItemList() throws IOException 
+	public Hashtable<String,StoreItem> getAll(ArmorType armorType)
 	{
-		
-		try
+		switch (armorType)
 		{
-			BufferedReader fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Store/gearList/itemList.txt")));
+		case Head:
+			return headList;
+		case Body:
+			return bodyList;
+		case Gloves:
+			return glovesList;
+		case Legs:
+			return legList;
+		case Items:
+			return itemList;
+		case Shoes:
+			return shoeList;
 			
-			String fileLine;
-			String[] attribute;
-			StoreItem item;
-			//readlines until end of txt
-			while((fileLine = fin.readLine()) != null)
-			{
-				attribute = fileLine.split(",");
-				//attribute 0 = name, 1 = item price, 2 = item path when parsed
-				item = new StoreItem((attribute[0]),Integer.parseInt(attribute[1]),(attribute[2]));//name
-				itemList.put(attribute[0],item);
-				System.out.println("Added " + attribute[0] + " to the store!");
-			}
-			fin.close();
+		default:
+			return null;
 		}
-		catch(Exception e)
-		{
-			 throw e;
-		}				
-	}	
+	}
 	
-	public void readShoeList() throws IOException 
+	public void readStoreItems(ArmorType armorType) throws IOException
 	{
-		
-		try
+		try 
 		{
-			BufferedReader fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Store/gearList/shoeList.txt")));
+			BufferedReader fin;
+			
+			switch (armorType)
+			{
+			case Head:
+				fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Resources/Store/headList.txt")));
+				break;
+			case Body:
+				fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Resources/Store/bodyList.txt")));
+				break;
+			case Legs:
+				fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Resources/Store/legList.txt")));
+				break;
+			case Gloves:
+				fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Resources/Store/glovesList.txt")));
+				break;
+			case Items:
+				fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Resources/Store/itemList.txt")));
+				break;
+			case Shoes:
+				fin = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Resources/Store/shoeList.txt")));
+				break;
+				
+			default:
+				fin = new BufferedReader(null);
+			}
 			
 			String fileLine;
 			String[] attribute;
 			StoreItem item;
+			
 			//readlines until end of txt
 			while((fileLine = fin.readLine()) != null)
 			{
 				attribute = fileLine.split(",");
 				//attribute 0 = name, 1 = item price, 2 = item path when parsed
 				item = new StoreItem((attribute[0]),Integer.parseInt(attribute[1]),(attribute[2]));//name
-				shoeList.put(attribute[0],item);
+				
+				switch (armorType)
+				{
+				case Head:
+					headList.put(attribute[0],item);
+					break;
+				case Body:
+					bodyList.put(attribute[0],item);
+					break;
+				case Legs:
+					legList.put(attribute[0],item);
+					break;
+				case Gloves:
+					glovesList.put(attribute[0],item);
+					break;
+				case Items:
+					itemList.put(attribute[0],item);
+					break;
+				case Shoes:
+					shoeList.put(attribute[0],item);
+					break;
+				}
+				
 				System.out.println("Added " + attribute[0] + " to the store!");
 			}
 			fin.close();
 		}
-		catch(Exception e)
+		catch (IOException e)
 		{
-			 throw e;
-		}				
-	}	
+			e.printStackTrace();
+		}
+		
+	}				
 }

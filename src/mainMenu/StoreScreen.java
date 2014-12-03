@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Hashtable;
 import java.util.Map.Entry;
 
 import javax.swing.BorderFactory;
@@ -15,12 +16,21 @@ import javax.swing.SwingConstants;
 
 import Store.StoreItem;
 import User.ArmorType;
+import User.Body;
+import User.Gear;
+import User.Gloves;
+import User.Head;
+import User.Items;
+import User.Legs;
+import User.Shoes;
 
 @SuppressWarnings("serial")
 public class StoreScreen extends ActiveScreen implements ActionListener
 {
 	JPanel storeSidebar;
 	JPanel itemsPanel;
+	
+	Color normalButtonColor;
 	
 	JButton headButton;
 	JButton bodyButton;
@@ -90,6 +100,8 @@ public class StoreScreen extends ActiveScreen implements ActionListener
 		
 		this.add(storeSidebar);	
 		this.add(itemsPanel);
+		
+		normalButtonColor = headButton.getBackground();
 	}
 
 	public void actionPerformed(ActionEvent e)
@@ -98,185 +110,128 @@ public class StoreScreen extends ActiveScreen implements ActionListener
 		
 		if (action.equals("Head"))
 		{
-			this.drawAvailbleHeadItems();			
+			this.drawStoreItems(ArmorType.Head);
+			resetButtonColors();
+			headButton.setBackground(Color.gray);
 		}			
 		else if (action.equals("Body"))
 		{
-			this.drawAvailbleBodyItems();
+			this.drawStoreItems(ArmorType.Body);
+			resetButtonColors();
+			bodyButton.setBackground(Color.gray);
 		}	
 		else if (action.equals("Legs"))
 		{
-			this.drawAvailbleLegItems();
+			this.drawStoreItems(ArmorType.Legs);
+			resetButtonColors();
+			legsButton.setBackground(Color.gray);
 		}	
 		else if (action.equals("Gloves"))
 		{
-			this.drawAvailbleGloveItems();
+			this.drawStoreItems(ArmorType.Gloves);
+			resetButtonColors();
+			glovesButton.setBackground(Color.gray);
 		}	
 		else if (action.equals("Shoes"))
 		{
-			this.drawAvailbleShoeItems();
+			this.drawStoreItems(ArmorType.Shoes);
+			resetButtonColors();
+			shoesButton.setBackground(Color.gray);
 		}	
 		else if (action.equals("Item"))
 		{
-			this.drawAvailbleItemItems();
+			this.drawStoreItems(ArmorType.Items);
+			resetButtonColors();
+			itemButton.setBackground(Color.gray);
 		}	
-		else if (action.contains("head"))
-		{
-			String name = action.substring(4);
-			
-			if (this.frame.user.inventory.owns(name,ArmorType.Head))
-			{ //If player already owns the Head piece.
-				System.out.println("YOU ALREADY OWN: " + name);
-			}
-			else if (this.frame.user.money >= this.frame.store.headList.get(name).getPrice())
-			{ //If player can afford the Head piece.
-				//Adds a new Head piece to user's inventory.
-				System.out.println("You have purchased: " + name);
-				this.frame.user.inventory.add(new User.Head(name,frame.store.headList.get(name).getImage(50, 50)), ArmorType.Head);
-				
-				//Removes the cost of Head piece from user's currency.
-				this.frame.user.money -= this.frame.store.headList.get(name).getPrice();
-				
-				
-				this.refreshCurrencyBar();
-			}
-			else
-			{ //If play cannot afford the Head piece.
-				System.out.println("CANNOT AFFORD: " + name);
-			}
-		}
-		else if (action.contains("body"))
-		{
-			String name = action.substring(4);
-			
-			if (this.frame.user.inventory.owns(name,ArmorType.Body))
-			{ //If player already owns the Body piece.
-				System.out.println("YOU ALREADY OWN: " + name);
-			}
-			else if (this.frame.user.money >= this.frame.store.bodyList.get(name).getPrice())
-			{ //If player can afford the Body piece.
-				//Adds a new Body piece to user's inventory.
-				System.out.println("You have purchased: " + name);
-				this.frame.user.inventory.add(new User.Body(name,frame.store.bodyList.get(name).getImage(50, 50)), ArmorType.Body);
-				
-				//Removes the cost of Body piece from user's currency.
-				this.frame.user.money -= this.frame.store.bodyList.get(name).getPrice();
-				
-				
-				this.refreshCurrencyBar();
-			}
-			else
-			{ //If play cannot afford the Body piece.
-				System.out.println("CANNOT AFFORD: " + name);
-			}
-		}
-		else if (action.contains("leg"))
-		{
-			String name = action.substring(3);
-			
-			if (this.frame.user.inventory.owns(name,ArmorType.Legs))
-			{ //If player already owns the Leg piece.
-				System.out.println("YOU ALREADY OWN: " + name);
-			}
-			else if (this.frame.user.money >= this.frame.store.legList.get(name).getPrice())
-			{ //If player can afford the Leg piece.
-				//Adds a new Leg piece to user's inventory.
-				System.out.println("You have purchased: " + name);
-				this.frame.user.inventory.add(new User.Legs(name,frame.store.legList.get(name).getImage(50, 50)), ArmorType.Legs);
-				
-				//Removes the cost of Leg piece from user's currency.
-				this.frame.user.money -= this.frame.store.legList.get(name).getPrice();
-				
-				
-				this.refreshCurrencyBar();
-			}
-			else
-			{ //If play cannot afford the Leg piece.
-				System.out.println("CANNOT AFFORD: " + name);
-			}
-		}
-		else if (action.contains("gloves"))
+		else if (action.contains("Head: "))
 		{
 			String name = action.substring(6);
-			
-			if (this.frame.user.inventory.owns(name,ArmorType.Gloves))
-			{ //If player already owns the Glove piece.
-				System.out.println("YOU ALREADY OWN: " + name);
-			}
-			else if (this.frame.user.money >= this.frame.store.glovesList.get(name).getPrice())
-			{ //If player can afford the Glove piece.
-				//Adds a new Glove piece to user's inventory.
-				System.out.println("You have purchased: " + name);
-				this.frame.user.inventory.add(new User.Gloves(name,frame.store.glovesList.get(name).getImage(50, 50)), ArmorType.Gloves);
-				
-				//Removes the cost of Glove piece from user's currency.
-				this.frame.user.money -= this.frame.store.glovesList.get(name).getPrice();
-				
-				
-				this.refreshCurrencyBar();
-			}
-			else
-			{ //If play cannot afford the Glove piece.
-				System.out.println("CANNOT AFFORD: " + name);
-			}
+			purchaseItem(name, ArmorType.Head);
 		}
-		else if (action.contains("shoe"))
+		else if (action.contains("Body: "))
 		{
-			String name = action.substring(4);
-			
-			if (this.frame.user.inventory.owns(name,ArmorType.Shoes))
-			{ //If player already owns the Shoe piece.
-				System.out.println("YOU ALREADY OWN: " + name);
-			}
-			else if (this.frame.user.money >= this.frame.store.shoeList.get(name).getPrice())
-			{ //If player can afford the Shoe piece.
-				//Adds a new Shoe piece to user's inventory.
-				System.out.println("You have purchased: " + name);
-				this.frame.user.inventory.add(new User.Shoes(name,frame.store.shoeList.get(name).getImage(50, 50)), ArmorType.Shoes);
-				
-				//Removes the cost of Shoe piece from user's currency.
-				this.frame.user.money -= this.frame.store.shoeList.get(name).getPrice();
-				
-				
-				this.refreshCurrencyBar();
-			}
-			else
-			{ //If play cannot afford the Shoe piece.
-				System.out.println("CANNOT AFFORD: " + name);
-			}
+			String name = action.substring(6);
+			purchaseItem(name, ArmorType.Body);
 		}
-		else if (action.contains("item"))
+		else if (action.contains("Legs: "))
 		{
-			String name = action.substring(4);
+			String name = action.substring(6);
+			purchaseItem(name, ArmorType.Legs);
+		}
+		else if (action.contains("Gloves: "))
+		{
+			String name = action.substring(8);
+			purchaseItem(name, ArmorType.Gloves);
+		}
+		else if (action.contains("Shoes: "))
+		{
+			String name = action.substring(7);
+			purchaseItem(name, ArmorType.Shoes);
+		}
+		else if (action.contains("Items: "))
+		{
+			String name = action.substring(7);
+			purchaseItem(name, ArmorType.Items);
 			
-			if (this.frame.user.inventory.owns(name,ArmorType.Items))
-			{ //If player already owns the Item piece.
-				System.out.println("YOU ALREADY OWN: " + name);
-			}
-			else if (this.frame.user.money >= this.frame.store.itemList.get(name).getPrice())
-			{ //If player can afford the Item piece.
-				//Adds a new Item piece to user's inventory.
-				System.out.println("You have purchased: " + name);
-				this.frame.user.inventory.add(new User.Items(name,frame.store.itemList.get(name).getImage(50, 50)), ArmorType.Items);
-				
-				//Removes the cost of Item piece from user's currency.
-				this.frame.user.money -= this.frame.store.itemList.get(name).getPrice();
-				
-				
-				this.refreshCurrencyBar();
-			}
-			else
-			{ //If play cannot afford the Item piece.
-				System.out.println("CANNOT AFFORD: " + name);
-			}
 		}
 	}
 	
-	void drawAvailbleHeadItems()
+	void purchaseItem(String name, ArmorType armorType)
+	{
+		
+		if (this.frame.user.inventory.owns(name,armorType))
+		{ //If player already owns the item.
+			System.out.println("YOU ALREADY OWN: " + name);
+		}
+		else if (this.frame.user.money >= this.frame.store.get(name, armorType).getPrice())
+		{ //If player can afford the item.
+			//Adds a new item to user's inventory.
+			System.out.println("You have purchased: " + name);
+			
+			Gear item = null;
+			switch (armorType)
+			{
+			case Head:
+				item = new Head(name,frame.store.get(name,armorType).getImage(50, 50));
+				break;
+			case Body:
+				item = new Body(name,frame.store.get(name,armorType).getImage(50, 50));
+				break;
+			case Legs:
+				item = new Legs(name,frame.store.get(name,armorType).getImage(50, 50));
+				break;
+			case Gloves:
+				item = new Gloves(name,frame.store.get(name,armorType).getImage(50, 50));
+				break;
+			case Items:
+				item = new Items(name,frame.store.get(name,armorType).getImage(50, 50));
+				break;
+			case Shoes:
+				item = new Shoes(name,frame.store.get(name,armorType).getImage(50, 50));
+				break;
+			}
+			
+			this.frame.user.inventory.add(item, armorType);
+			
+			//Removes the cost of item from user's currency.
+			this.frame.user.money -= this.frame.store.get(name,armorType).getPrice();
+			
+			
+			this.refreshCurrencyBar();
+		}
+		else
+		{ //If play cannot afford the Item piece.
+			System.out.println("CANNOT AFFORD: " + name);
+		}
+	}
+
+	void drawStoreItems(ArmorType armorType)
 	{
 		itemsPanel.removeAll();
-
-		for (Entry<String, StoreItem> entry : frame.store.headList.entrySet())
+		Hashtable<String, StoreItem> choice = frame.store.getAll(armorType);
+		
+		for (Entry<String, StoreItem> entry : choice.entrySet())
 		{
 			JButton button = new JButton();
 			button.setLayout(new BorderLayout());
@@ -295,7 +250,8 @@ public class StoreScreen extends ActiveScreen implements ActionListener
 			button.setBorder(BorderFactory.createLineBorder(Color.black));;
 			
 			
-			button.setActionCommand("head" + entry.getValue().getName());
+			button.setActionCommand(armorType + ": "+ entry.getValue().getName());
+			//System.out.println(armorType + ": "+ entry.getValue().getName());
 			button.addActionListener(this);
 			
 			itemsPanel.add(button);
@@ -305,168 +261,31 @@ public class StoreScreen extends ActiveScreen implements ActionListener
 		itemsPanel.repaint();
 	}
 	
-	void drawAvailbleBodyItems()
+	void resetButtonColors()
 	{
-		itemsPanel.removeAll();
-
-		for (Entry<String, StoreItem> entry : frame.store.bodyList.entrySet())
+		if (headButton.getBackground() == Color.gray)
 		{
-			JButton button = new JButton();
-			button.setLayout(new BorderLayout());
-			JLabel label1 = new JLabel(entry.getValue().getName());
-			JLabel label2 = new JLabel(Integer.toString(entry.getValue().getPrice()));
-			button.add(BorderLayout.NORTH,label1);
-			button.add(BorderLayout.SOUTH,label2);
-			button.setToolTipText(entry.getValue().getName());
-			
-			button.setVerticalTextPosition(SwingConstants.CENTER);
-		    button.setHorizontalTextPosition(SwingConstants.RIGHT);
-			
-			button.setIcon(entry.getValue().getImage(50,50));
-			
-			button.setBackground(Color.gray);
-			button.setBorder(BorderFactory.createLineBorder(Color.black));;
-			
-			
-			button.setActionCommand("body" + entry.getValue().getName());
-			button.addActionListener(this);
-			
-			itemsPanel.add(button);
+			headButton.setBackground(normalButtonColor);
 		}
-		
-		validate();
-		itemsPanel.repaint();
-	}
-	
-	void drawAvailbleLegItems()
-	{
-		itemsPanel.removeAll();
-
-		for (Entry<String, StoreItem> entry : frame.store.legList.entrySet())
+		else if (bodyButton.getBackground() == Color.gray)
 		{
-			JButton button = new JButton();
-			button.setLayout(new BorderLayout());
-			JLabel label1 = new JLabel(entry.getValue().getName());
-			JLabel label2 = new JLabel(Integer.toString(entry.getValue().getPrice()));
-			button.add(BorderLayout.NORTH,label1);
-			button.add(BorderLayout.SOUTH,label2);
-			button.setToolTipText(entry.getValue().getName());
-			
-			button.setVerticalTextPosition(SwingConstants.CENTER);
-		    button.setHorizontalTextPosition(SwingConstants.RIGHT);
-			
-			button.setIcon(entry.getValue().getImage(50,50));
-			
-			button.setBackground(Color.gray);
-			button.setBorder(BorderFactory.createLineBorder(Color.black));;
-			
-			
-			button.setActionCommand("leg" + entry.getValue().getName());
-			button.addActionListener(this);
-			
-			itemsPanel.add(button);
+			bodyButton.setBackground(normalButtonColor);
 		}
-		
-		validate();
-		itemsPanel.repaint();
-	}
-	
-	void drawAvailbleGloveItems()
-	{
-		itemsPanel.removeAll();
-
-		for (Entry<String, StoreItem> entry : frame.store.glovesList.entrySet())
+		else if (legsButton.getBackground() == Color.gray)
 		{
-			JButton button = new JButton();
-			button.setLayout(new BorderLayout());
-			JLabel label1 = new JLabel(entry.getValue().getName());
-			JLabel label2 = new JLabel(Integer.toString(entry.getValue().getPrice()));
-			button.add(BorderLayout.NORTH,label1);
-			button.add(BorderLayout.SOUTH,label2);
-			button.setToolTipText(entry.getValue().getName());
-			
-			button.setVerticalTextPosition(SwingConstants.CENTER);
-		    button.setHorizontalTextPosition(SwingConstants.RIGHT);
-			
-			button.setIcon(entry.getValue().getImage(50,50));
-			
-			button.setBackground(Color.gray);
-			button.setBorder(BorderFactory.createLineBorder(Color.black));;
-			
-			
-			button.setActionCommand("gloves" + entry.getValue().getName());
-			button.addActionListener(this);
-			
-			itemsPanel.add(button);
+			legsButton.setBackground(normalButtonColor);
 		}
-		
-		validate();
-		itemsPanel.repaint();
-	}
-	
-	void drawAvailbleShoeItems()
-	{
-		itemsPanel.removeAll();
-
-		for (Entry<String, StoreItem> entry : frame.store.shoeList.entrySet())
+		else if (glovesButton.getBackground() == Color.gray)
 		{
-			JButton button = new JButton();
-			button.setLayout(new BorderLayout());
-			JLabel label1 = new JLabel(entry.getValue().getName());
-			JLabel label2 = new JLabel(Integer.toString(entry.getValue().getPrice()));
-			button.add(BorderLayout.NORTH,label1);
-			button.add(BorderLayout.SOUTH,label2);
-			button.setToolTipText(entry.getValue().getName());
-			
-			button.setVerticalTextPosition(SwingConstants.CENTER);
-		    button.setHorizontalTextPosition(SwingConstants.RIGHT);
-			
-			button.setIcon(entry.getValue().getImage(50,50));
-			
-			button.setBackground(Color.gray);
-			button.setBorder(BorderFactory.createLineBorder(Color.black));;
-			
-			
-			button.setActionCommand("shoe" + entry.getValue().getName());
-			button.addActionListener(this);
-			
-			itemsPanel.add(button);
+			glovesButton.setBackground(normalButtonColor);
 		}
-		
-		validate();
-		itemsPanel.repaint();
-	}
-	
-	void drawAvailbleItemItems()
-	{
-		itemsPanel.removeAll();
-
-		for (Entry<String, StoreItem> entry : frame.store.itemList.entrySet())
+		else if (shoesButton.getBackground() == Color.gray)
 		{
-			JButton button = new JButton();
-			button.setLayout(new BorderLayout());
-			JLabel label1 = new JLabel(entry.getValue().getName());
-			JLabel label2 = new JLabel(Integer.toString(entry.getValue().getPrice()));
-			button.add(BorderLayout.NORTH,label1);
-			button.add(BorderLayout.SOUTH,label2);
-			button.setToolTipText(entry.getValue().getName());
-			
-			button.setVerticalTextPosition(SwingConstants.CENTER);
-		    button.setHorizontalTextPosition(SwingConstants.RIGHT);
-			
-			button.setIcon(entry.getValue().getImage(50,50));
-			
-			button.setBackground(Color.gray);
-			button.setBorder(BorderFactory.createLineBorder(Color.black));;
-			
-			
-			button.setActionCommand("item" + entry.getValue().getName());
-			button.addActionListener(this);
-			
-			itemsPanel.add(button);
+			shoesButton.setBackground(normalButtonColor);
 		}
-		
-		validate();
-		itemsPanel.repaint();
+		else if (itemButton.getBackground() == Color.gray)
+		{
+			itemButton.setBackground(normalButtonColor);
+		}
 	}
 }

@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 
 import java.awt.event.ActionEvent;
+import java.util.Hashtable;
 import java.util.Map.Entry;
 
 
@@ -14,29 +15,21 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 
 
 import User.ArmorType;
-import User.Head;
+import User.Gear;
 
 
 @SuppressWarnings("serial")
 public class ItemsScreen extends ActiveScreen implements ActionListener
 {	
 	JPanel itemsBackground;
-	JPanel ownedItemsBackground;
-	//Buttons used for selecting what items to load	
-	JButton headPanel;
-	JButton glovesPanel;
-	JButton bodyPanel;
-	JButton itemsPanel;
-	JButton legsPanel;
+	JPanel ownedItemsPanel;
 	
-	JButton shoesPanel;
+	//Buttons used for selecting what items to load	
 	JButton headButton;
 	JButton glovesButton;
 	JButton bodyButton;
@@ -65,61 +58,12 @@ public class ItemsScreen extends ActiveScreen implements ActionListener
 		itemsBackground.setLocation(this.getWidth()-300, 5);
 		itemsBackground.setBackground(Color.blue);
 		itemsBackground.setLayout(null);
-
-		ownedItemsBackground = new JPanel();
-		ownedItemsBackground.setSize(itemsBackground.getX()-15,itemsBackground.getHeight());
-		ownedItemsBackground.setLocation(10,5);
-		ownedItemsBackground.setBackground(Color.gray);
-		ownedItemsBackground.setLayout(new GridLayout(3, 3));
 		
-		headPanel = new JButton();
-		headPanel.setSize(50, 50);
-		headPanel.setLocation(itemsBackground.getWidth()/2-headPanel.getWidth()/2, (int) (itemsBackground.getHeight()*0.10));
-		headPanel.setBackground(Color.white);
-		headPanel.setLayout(new GridLayout(1,1));
-		headPanel.setBorder(BorderFactory.createEmptyBorder());
-		
-		bodyPanel = new JButton();
-		bodyPanel.setSize(75, 125);
-		bodyPanel.setLocation(itemsBackground.getWidth()/2-bodyPanel.getWidth()/2, (int) (itemsBackground.getHeight()*0.10+headPanel.getHeight()+5));
-		bodyPanel.setBackground(Color.white);
-		bodyPanel.setLayout(new GridLayout(1,1));
-		bodyPanel.setBorder(BorderFactory.createEmptyBorder());
-		
-		glovesPanel = new JButton();
-		glovesPanel.setSize(75, 50);
-		glovesPanel.setLocation(itemsBackground.getWidth()/2-bodyPanel.getWidth()/2-glovesPanel.getWidth()-5, (int) (itemsBackground.getHeight()*0.10+headPanel.getHeight()+5));
-		glovesPanel.setBackground(Color.white);
-		glovesPanel.setLayout(new GridLayout(1,1));
-		glovesPanel.setBorder(BorderFactory.createEmptyBorder());
-		
-		itemsPanel = new JButton();
-		itemsPanel.setSize(50, 75);
-		itemsPanel.setLocation(itemsBackground.getWidth()/2+bodyPanel.getWidth()/2+5, (int) (itemsBackground.getHeight()*0.10+headPanel.getHeight()+5));
-		itemsPanel.setBackground(Color.white);
-		itemsPanel.setLayout(new GridLayout(1,1));
-		itemsPanel.setBorder(BorderFactory.createEmptyBorder());
-		
-		legsPanel = new JButton();
-		legsPanel.setSize(75, 100);
-		legsPanel.setLocation(itemsBackground.getWidth()/2-legsPanel.getWidth()/2, (int) (bodyPanel.getY()+bodyPanel.getHeight()+5));
-		legsPanel.setBackground(Color.white);
-		legsPanel.setLayout(new GridLayout(1,1));
-		legsPanel.setBorder(BorderFactory.createEmptyBorder());
-		
-		shoesPanel = new JButton();
-		shoesPanel.setSize(100, 50);
-		shoesPanel.setLocation(itemsBackground.getWidth()/2-shoesPanel.getWidth()/2, (int) (legsPanel.getY()+legsPanel.getHeight()+5));
-		shoesPanel.setBackground(Color.white);
-		shoesPanel.setLayout(new GridLayout(1,1));
-		shoesPanel.setBorder(BorderFactory.createEmptyBorder());
-		
-		itemsBackground.add(headPanel);
-		itemsBackground.add(bodyPanel);
-		itemsBackground.add(glovesPanel);
-		itemsBackground.add(itemsPanel);
-		itemsBackground.add(legsPanel);
-		itemsBackground.add(shoesPanel);
+		ownedItemsPanel = new JPanel();
+		ownedItemsPanel.setSize(itemsBackground.getX()-15,itemsBackground.getHeight());
+		ownedItemsPanel.setLocation(10,5);
+		ownedItemsPanel.setBackground(Color.gray);
+		ownedItemsPanel.setLayout(new GridLayout(0, 4));
 
 		headButton = new JButton();
 		headButton.setSize(50, 50);
@@ -183,8 +127,9 @@ public class ItemsScreen extends ActiveScreen implements ActionListener
 		itemsBackground.add(legsButton);
 		itemsBackground.add(shoesButton);
 		
-		this.add(ownedItemsBackground);
+		this.add(ownedItemsPanel);
 		this.add(itemsBackground);
+		
 		drawEquippedGear(ArmorType.Head);
 		drawEquippedGear(ArmorType.Body);
 		drawEquippedGear(ArmorType.Gloves);
@@ -195,132 +140,141 @@ public class ItemsScreen extends ActiveScreen implements ActionListener
 	
 	void drawEquippedGear(ArmorType armorType)
 	{
+		ImageIcon image = frame.user.inventory.getEquipped(armorType).getImage();
+		String name = frame.user.inventory.getEquipped(armorType).getName();
 		switch (armorType)
 		{		
 		case Head:
 			headButton.removeAll();
-			ImageIcon headImage = frame.user.inventory.equippedHelmet.getImage();
-			headButton.add(new JLabel(headImage));
-			
+			headButton.add(new JLabel(image));
+			headButton.setToolTipText(name);
+			break;
 		case Body:
 			bodyButton.removeAll();
-			ImageIcon bodyImage = frame.user.inventory.equippedBody.getImage();
-			bodyButton.add(new JLabel(bodyImage));
-			
+			bodyButton.add(new JLabel(image));
+			bodyButton.setToolTipText(name);
+			break;
 		case Gloves:
 			glovesButton.removeAll();
-			ImageIcon glovesImage = frame.user.inventory.equippedGloves.getImage();
-			glovesButton.add(new JLabel(glovesImage));
-			
+			glovesButton.add(new JLabel(image));
+			glovesButton.setToolTipText(name);
+			break;
 		case Items:
 			itemsButton.removeAll();
-			ImageIcon itemsImage = frame.user.inventory.equippedItems.getImage();
-			itemsButton.add(new JLabel(itemsImage));
-			
+			itemsButton.add(new JLabel(image));
+			itemsButton.setToolTipText(name);
+			break;
 		case Legs:
 			legsButton.removeAll();
-			ImageIcon legsImage = frame.user.inventory.equippedLegs.getImage();
-			legsButton.add(new JLabel(legsImage));
-			
+			legsButton.add(new JLabel(image));
+			legsButton.setToolTipText(name);
+			break;
 		case Shoes:
 			shoesButton.removeAll();
-			ImageIcon shoesImage = frame.user.inventory.equippedShoes.getImage();
-			shoesButton.add(new JLabel(shoesImage));
-			
-		default:
+			shoesButton.add(new JLabel(image));
+			shoesButton.setToolTipText(name);
+			break;
 		}
-		
+		validate();
 		this.repaint();
-		this.setVisible(true);
 	}
 		
-	void drawHeadInventory()
+	void drawInventory(ArmorType armorType)
 	{
-		ownedItemsBackground.removeAll();
-		for(Entry<String,Head> entry : frame.user.inventory.ownedHeadPieces.entrySet())
+		ownedItemsPanel.removeAll();
+		Hashtable<String, Gear> choice = frame.user.inventory.getOwned(armorType);
+		
+		for (Entry<String, Gear> entry : choice.entrySet())
 		{
 			JButton button = new JButton();
 			button.setLayout(new BorderLayout());
 			JLabel label1 = new JLabel(entry.getValue().getName());
 			button.add(BorderLayout.NORTH,label1);
+			
 			button.setToolTipText(entry.getValue().getName());
-			//button.setIcon(entry.getValue().getImage(50,50));
+			
+			button.setVerticalTextPosition(SwingConstants.CENTER);
+		    button.setHorizontalTextPosition(SwingConstants.RIGHT);
+			
+			button.setIcon(entry.getValue().getImage());
+			
+			button.setBackground(Color.gray);
+			button.setBorder(BorderFactory.createLineBorder(Color.black));;
+			
+			
+			button.setActionCommand("Equip " + armorType + " Slot: " + entry.getValue().getName());
+			button.addActionListener(this);
+			
+			ownedItemsPanel.add(button);
 		}
-				
-		ownedItemsBackground.repaint();
 		
-	}
-	
-	void drawBodyInventory()
-	{
-		ownedItemsBackground.removeAll();
-		ownedItemsBackground.repaint();
-	}
-	
-	void drawGloveInventory()
-	{
-		ownedItemsBackground.removeAll();
-		ownedItemsBackground.repaint();
-	}
-	
-	void drawLegInventory()
-	{
-		ownedItemsBackground.removeAll();
-		ownedItemsBackground.repaint();
-	}
-	
-	void drawShoeInventory()
-	{
-		ownedItemsBackground.removeAll();
-		ownedItemsBackground.repaint();
-	}
-
-	
-	void drawItemInventory()
-	{
-		ownedItemsBackground.removeAll();
-		ownedItemsBackground.repaint();
+		validate();
+		itemsButton.repaint();
 	}
 
 	public void actionPerformed(ActionEvent e) 
 	{
 		String action = e.getActionCommand();
+		
 		if (action.equals("Equip Head Slot"))
 		{
-			JTextArea textArea = new JTextArea(6, 25);
-			textArea.setText("STUFFFFFFFF");
-			textArea.setEditable(false);
-			this.drawHeadInventory();			
-			// wrap a scrollpane around it
-			JScrollPane scrollPane = new JScrollPane(textArea);
-
-			// display them in a message dialog
-			JOptionPane.showMessageDialog(frame, scrollPane);
+			drawInventory(ArmorType.Head);
 		}
 		else if (action.equals("Equip Body Slot"))
 		{
-			System.out.println("STUFF");
-			this.drawBodyInventory();
+			drawInventory(ArmorType.Body);
 		}
 		else if (action.equals("Equip Gloves Slot"))
 		{
-			System.out.println("STUFF");
-			this.drawGloveInventory();
+			drawInventory(ArmorType.Gloves);
 		}
 		else if (action.equals("Equip Items Slot"))
 		{
-			System.out.println("STUFF");
-			this.drawItemInventory();
+			drawInventory(ArmorType.Items);
 		}
 		else if (action.equals("Equip Legs Slot"))
 		{
-			System.out.println("STUFF");
-			this.drawLegInventory();
+			drawInventory(ArmorType.Legs);
 		}
 		else if (action.equals("Equip Shoes Slot"))
 		{
-			System.out.println("STUFF");
-			this.drawShoeInventory();
+			drawInventory(ArmorType.Shoes);
+		}
+		else if (action.contains("Equip Head Slot: "))
+		{
+			String name = action.substring(17);
+			frame.user.inventory.equip(name,ArmorType.Head);
+			drawEquippedGear(ArmorType.Head);
+		}
+		else if (action.contains("Equip Body Slot: "))
+		{
+			String name = action.substring(17);
+			frame.user.inventory.equip(name,ArmorType.Body);
+			drawEquippedGear(ArmorType.Body);
+		}
+		else if (action.contains("Equip Legs Slot: "))
+		{
+			String name = action.substring(17);
+			frame.user.inventory.equip(name,ArmorType.Legs);
+			drawEquippedGear(ArmorType.Legs);
+		}
+		else if (action.contains("Equip Items Slot: "))
+		{
+			String name = action.substring(18);
+			frame.user.inventory.equip(name,ArmorType.Items);
+			drawEquippedGear(ArmorType.Items);
+		}
+		else if (action.contains("Equip Gloves Slot: "))
+		{
+			String name = action.substring(19);
+			frame.user.inventory.equip(name,ArmorType.Gloves);
+			drawEquippedGear(ArmorType.Gloves);
+		}
+		else if (action.contains("Equip Shoes Slot: "))
+		{
+			String name = action.substring(18);
+			frame.user.inventory.equip(name,ArmorType.Shoes);
+			drawEquippedGear(ArmorType.Shoes);
 		}
 	}
 
