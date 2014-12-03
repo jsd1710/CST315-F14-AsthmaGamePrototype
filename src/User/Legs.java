@@ -34,7 +34,7 @@ public class Legs extends Gear
 		{
 			//Convert to 50x50 Icon
 			Image img = image.getImage();  
-			Image newimg = img.getScaledInstance(50, 75,  java.awt.Image.SCALE_SMOOTH);  
+			Image newimg = img.getScaledInstance(75, 100,  java.awt.Image.SCALE_SMOOTH);  
 			image = new ImageIcon(newimg); 
 			
 			return image;
