@@ -2,8 +2,6 @@ package Rewards;
 
 import java.util.Hashtable;
 
-import User.Gear;
-
 public class Quest {
 	
 	Hashtable<String, moneyQuest> moneyQuests;

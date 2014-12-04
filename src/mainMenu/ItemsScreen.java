@@ -216,66 +216,52 @@ public class ItemsScreen extends ActiveScreen implements ActionListener
 	{
 		String action = e.getActionCommand();
 		
-		if (action.equals("Equip Head Slot"))
+		if (action.startsWith("Equip") && action.endsWith("Slot"))
 		{
-			drawInventory(ArmorType.Head);
+			String enumString = "";
+			for (int i = 6; i < action.length(); i++)
+			{
+				if (action.charAt(i) == ' ')
+				{
+					drawInventory(ArmorType.valueOf(enumString));
+					break;
+				}
+				else 
+				{
+					enumString += action.charAt(i);
+				}
+			}
 		}
-		else if (action.equals("Equip Body Slot"))
+		else if (action.startsWith("Equip") && action.contains("Slot: "))
 		{
-			drawInventory(ArmorType.Body);
+			String enumString = "";
+			ArmorType enumType = null;
+			
+			for (int i = 6; i < action.length(); i++)
+			{
+				if (action.charAt(i) == ' ')
+				{
+					enumType = ArmorType.valueOf(enumString);
+					break;
+				}
+				else 
+				{
+					enumString += action.charAt(i);
+				}
+			}
+			
+			for (int i = action.length()-1; i > 0; i--)
+			{
+				if (action.charAt(i) == ' ' && action.charAt(i-1) == ':')
+				{
+					String name = action.substring(i+1, action.length());
+					frame.user.inventory.equip(name, enumType);
+					drawEquippedGear(enumType);
+					break;
+				}
+			}
 		}
-		else if (action.equals("Equip Gloves Slot"))
-		{
-			drawInventory(ArmorType.Gloves);
-		}
-		else if (action.equals("Equip Items Slot"))
-		{
-			drawInventory(ArmorType.Items);
-		}
-		else if (action.equals("Equip Legs Slot"))
-		{
-			drawInventory(ArmorType.Legs);
-		}
-		else if (action.equals("Equip Shoes Slot"))
-		{
-			drawInventory(ArmorType.Shoes);
-		}
-		else if (action.contains("Equip Head Slot: "))
-		{
-			String name = action.substring(17);
-			frame.user.inventory.equip(name,ArmorType.Head);
-			drawEquippedGear(ArmorType.Head);
-		}
-		else if (action.contains("Equip Body Slot: "))
-		{
-			String name = action.substring(17);
-			frame.user.inventory.equip(name,ArmorType.Body);
-			drawEquippedGear(ArmorType.Body);
-		}
-		else if (action.contains("Equip Legs Slot: "))
-		{
-			String name = action.substring(17);
-			frame.user.inventory.equip(name,ArmorType.Legs);
-			drawEquippedGear(ArmorType.Legs);
-		}
-		else if (action.contains("Equip Items Slot: "))
-		{
-			String name = action.substring(18);
-			frame.user.inventory.equip(name,ArmorType.Items);
-			drawEquippedGear(ArmorType.Items);
-		}
-		else if (action.contains("Equip Gloves Slot: "))
-		{
-			String name = action.substring(19);
-			frame.user.inventory.equip(name,ArmorType.Gloves);
-			drawEquippedGear(ArmorType.Gloves);
-		}
-		else if (action.contains("Equip Shoes Slot: "))
-		{
-			String name = action.substring(18);
-			frame.user.inventory.equip(name,ArmorType.Shoes);
-			drawEquippedGear(ArmorType.Shoes);
-		}
+
 	}
 
 }
